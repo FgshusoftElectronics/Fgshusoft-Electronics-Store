@@ -91,3 +91,50 @@ background:#0d6efd;
 color:white;
 
 }
+
+
+
+
+#sidebar{
+
+background:#fff;
+border-radius:20px;
+padding:15px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+#sidebar .list-group-item{
+
+transition:.25s;
+font-weight:500;
+
+}
+
+#sidebar .list-group-item:hover{
+
+transform:translateX(6px);
+background:#0d6efd;
+color:#fff;
+
+}
+
+#sidebar .list-group-item:hover i{
+
+color:#fff !important;
+
+}
+
+#sidebar .list-group-item.active{
+
+background:#0d6efd;
+color:#fff;
+box-shadow:0 8px 20px rgba(13,110,253,.25);
+
+}
+
+#sidebar .list-group-item.active i{
+
+color:#fff !important;
+
+}
