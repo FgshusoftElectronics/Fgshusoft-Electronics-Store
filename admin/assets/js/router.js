@@ -61,7 +61,21 @@ export async function navigate(module){
         `modules/${module}/${module}.js`;
 
 
-        document.body.appendChild(script);
+      document.body.appendChild(script);
+
+
+script.onload = ()=>{
+console.log(
+module + " loaded"
+);
+};
+script.onerror = ()=>{
+alert(
+"Failed loading: " + module + ".js"
+);
+};
+
+        
 
 
 
