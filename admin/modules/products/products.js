@@ -1,35 +1,3 @@
-try {
-document.body.insertAdjacentHTML(
-"beforeend",
-`
-<div id="debugBox"
-style="
-position:fixed;
-bottom:10px;
-right:10px;
-background:#111;
-color:#0f0;
-padding:15px;
-z-index:99999;
-border-radius:10px;
-font-size:14px;
-">
-Products.js starting...
-</div>
-`
-);
-function debug(msg){
-const box =
-document.getElementById("debugBox");
-if(box){
-box.innerHTML += "<br>" + msg;
-}
-}
-debug("Script loaded");
-
-
-
-
     
 const products = [
 
@@ -335,18 +303,10 @@ Swal.fire(
 
 
 }
-
-
 });
-
-
 }
 
-
-
-
 // Events
-
 
 document
 .getElementById("searchProduct")
@@ -355,8 +315,6 @@ document
 searchProducts
 );
 
-
-
 document
 .getElementById("categoryFilter")
 .addEventListener(
@@ -364,34 +322,5 @@ document
 filterCategory
 );
 
-
-
 // Initial load
 displayProducts();
-debug("Products displayed");
-}
-catch(error){
-document.body.insertAdjacentHTML(
-"beforeend",
-
-`
-<div style="
-position:fixed;
-bottom:10px;
-right:10px;
-background:red;
-color:white;
-padding:20px;
-z-index:99999;
-border-radius:10px;
-">
-
-<b>Products Error:</b>
-
-<br>
-
-${error.message}
-</div>
-`
-);
-}
