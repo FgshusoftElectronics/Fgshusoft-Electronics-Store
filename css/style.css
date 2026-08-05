@@ -680,3 +680,33 @@ color:#555;
 font-weight:700;
 margin-top:20px;
 }
+
+
+/* ================= CONTACT ================= */
+.contact-card{
+background:white;
+padding:35px;
+border-radius:25px;
+box-shadow:0 10px 35px rgba(0,0,0,.08);
+}
+
+.contact-item{
+display:flex;
+align-items:center;
+gap:15px;
+margin-bottom:20px;
+font-size:18px;
+}
+
+.contact-item i{
+width:40px;
+height:40px;
+border-radius:50%;
+background:#0d6efd;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+
