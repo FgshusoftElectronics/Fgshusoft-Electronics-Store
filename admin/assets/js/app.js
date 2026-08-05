@@ -1,14 +1,19 @@
-import { loadSidebar } from "./ui.js";
-
-import { loadTopbar } from "./ui.js";
+import {
+    loadSidebar,
+    loadTopbar,
+    loadFooter
+} from "./ui.js";
 
 import { navigate } from "./router.js";
 
-window.addEventListener("DOMContentLoaded", () => {
 
-    loadSidebar();
+window.addEventListener("DOMContentLoaded", async () => {
 
-    loadTopbar();
+    await loadSidebar();
+
+    await loadTopbar();
+
+    await loadFooter();
 
     navigate("dashboard");
 
