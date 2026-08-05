@@ -228,7 +228,55 @@ section h2 {
 
 }
 
+/* HERO */
 
+.hero-slide{
+
+padding:80px 0;
+
+min-height:600px;
+
+display:flex;
+
+align-items:center;
+
+color:white;
+
+}
+
+.hero-slide-1{
+
+background:linear-gradient(135deg,#0d6efd,#003366);
+
+}
+
+.hero-slide-2{
+
+background:linear-gradient(135deg,#198754,#14532d);
+
+}
+
+.hero-slide-3{
+
+background:linear-gradient(135deg,#dc3545,#7f1d1d);
+
+}
+
+.hero-slide img{
+
+max-height:420px;
+
+object-fit:cover;
+
+border-radius:20px;
+
+}
+
+.carousel-item{
+
+transition:transform .8s ease-in-out;
+
+}
 
 /* CONTACT */
 
