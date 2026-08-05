@@ -486,8 +486,6 @@ box-shadow:0 20px 40px rgba(0,0,0,.15);
 
 }
 
-
-
 .category-card i{
 
 font-size:45px;
@@ -516,17 +514,32 @@ font-size:14px;
 
 }
 
-
-
 .category-card a{
 
 text-decoration:none;
-
 font-weight:600;
-
 color:#0d6efd;
+}
+
+/* FEATURED PRODUCTS */
+.featured-card{
+border-radius:20px;
+overflow:hidden;
+transition:.35s;
+}
+
+.featured-card:hover{
+transform:translateY(-12px);
+box-shadow:0 20px 45px rgba(0,0,0,.18)!important;
+}
+.featured-card img{
+transition:.4s;
 
 }
 
+.featured-card:hover img{
 
+transform:scale(1.05);
+
+}
 
