@@ -1,6 +1,9 @@
 // Fgshusoft Electronics Tech
 // Main JavaScript
+let cart = [];
 
+let cartCount =
+document.getElementById("cartCount");
 
 console.log("Fgshusoft Electronics website loaded successfully 🚀");
 
@@ -65,6 +68,10 @@ productContainer.innerHTML += `
 
         </button>
 
+<button class="btn btn-success w-100 mt-2">
+<i class="fa-brands fa-telegram"></i>
+Order via Telegram
+</button>
 
     </div>
 
@@ -90,6 +97,7 @@ function addToCart(productName){
     });
 
 }
+
 
 // Load products when page opens
 
