@@ -40,3 +40,12 @@ export async function loadTopbar() {
         await response.text();
 
 }
+
+export async function loadFooter() {
+
+    const response = await fetch("templates/footer.html");
+
+    document.getElementById("footer").innerHTML =
+        await response.text();
+
+}
