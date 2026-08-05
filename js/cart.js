@@ -281,3 +281,18 @@ onclick="increaseQuantity(${item.id})">
 
 
 }
+
+
+function openCart(){
+
+    updateCartUI();
+
+    const modal =
+    new bootstrap.Modal(
+        document.getElementById("cartModal")
+    );
+
+    modal.show();
+
+        }
+    
