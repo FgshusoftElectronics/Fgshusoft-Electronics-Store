@@ -13,9 +13,9 @@ const products = [
     price: 5000,
     currency: "FCFA",
     description: "WiFi + Bluetooth microcontroller for IoT projects",
-    stock: true
+    stock: true,
+    featured:true
 },
-
 
 {
     id: 2,
@@ -26,9 +26,9 @@ const products = [
     price: 7000,
     currency: "FCFA",
     description: "Popular development board for electronics training",
-    stock: true
+    stock: true,
+    featured:false
 },
-
 
 {
     id: 3,
@@ -39,9 +39,9 @@ const products = [
     price: 1500,
     currency: "FCFA",
     description: "Temperature and humidity measurement module",
-    stock: true
+    stock: true,
+    featured:true
 },
-
 
 {
     id: 4,
@@ -52,7 +52,20 @@ const products = [
     price: 3000,
     currency: "FCFA",
     description: "Bluetooth communication module for Arduino and ESP32 projects",
-    stock: true
-}
+    stock: true,
+    featured:false
+},
 
+{
+    id: 5,
+    name: "P10 LED DISPLAY",
+    category: "Display",
+    icon: "fa-shield-halved",
+    image: "https://picsum.photos/400/250?random=40",
+    price: 13000,
+    currency: "FCFA",
+    description: "P10 LED Display for Arduino and ESP32 projects",
+    stock: true,
+    featured:false
+}
 ];
