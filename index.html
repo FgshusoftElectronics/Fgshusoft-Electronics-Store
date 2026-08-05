@@ -23,18 +23,88 @@
 
 <body>
 
-<header>
+<header class="bg-primary text-white">
 
-<h1>Fgshusoft Electronics Tech</h1>
+<div class="container">
 
-<p>La référence en composants électroniques au Cameroun</p>
+<div class="d-flex justify-content-between align-items-center flex-wrap">
 
-<nav>
-<a href="#home">Home</a>
-<a href="#shop">Shop</a>
-<a href="#training">Training</a>
-<a href="#contact">Contact</a>
+
+<div>
+<h1>
+<i class="fa-solid fa-microchip"></i>
+Fgshusoft Electronics
+</h1>
+
+<p>
+La référence en composants électroniques au Cameroun
+</p>
+</div>
+
+
+
+<div>
+
+<button class="btn btn-light position-relative">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+Cart
+
+<span id="cartCount"
+class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+
+0
+
+</span>
+
+</button>
+
+</div>
+
+
+</div>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+
+
+<a class="nav-link text-white" href="#home">
+Home
+</a>
+
+
+<a class="nav-link text-white" href="#shop">
+Shop
+</a>
+
+
+<a class="nav-link text-white" href="#training">
+Training
+</a>
+
+
+<a class="nav-link text-white" href="#contact">
+Contact
+</a>
+
+
+<button class="btn btn-warning ms-auto">
+
+<i class="fa-solid fa-user"></i>
+
+Login/Register
+
+</button>
+
+
 </nav>
+
+
+
+</div>
+
 
 </header>
 
@@ -58,7 +128,41 @@ Explore Products
 
 <section id="shop">
 
-<h2>Electronic Shop</h2>
+<h2>
+<i class="fa-solid fa-store"></i>
+Electronic Shop
+</h2>
+
+
+<div class="row mb-4">
+
+
+<div class="col-md-8">
+
+<input 
+id="searchBox"
+class="form-control"
+placeholder="🔍 Search components...">
+
+</div>
+
+
+
+<div class="col-md-4">
+
+<select id="categoryFilter"
+class="form-select">
+
+<option value="all">
+All Categories
+</option>
+
+</select>
+
+</div>
+
+
+  </div>
 
 <div id="products">
 
