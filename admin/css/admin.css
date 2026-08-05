@@ -1,189 +1,93 @@
-:root{
-
---sidebar-width:280px;
-
---primary:#0d6efd;
-
---dark:#1f2937;
-
---light:#f8fafc;
-
---shadow:0 10px 30px rgba(0,0,0,.08);
-
-}
-
-*{
-
-margin:0;
-
-padding:0;
-
-box-sizing:border-box;
-
-font-family:"Poppins",sans-serif;
-
-}
-
 body{
 
-background:#f4f7fb;
-
-overflow-x:hidden;
+background:#f8fafc;
 
 }
 
-#app{
 
-display:flex;
+.navbar{
 
-min-height:100vh;
+border-bottom:1px solid #eee;
 
 }
 
-/* Sidebar */
+
 
 #sidebar{
 
-width:var(--sidebar-width);
-
 background:white;
 
-box-shadow:var(--shadow);
+border-radius:20px;
 
-position:fixed;
-
-left:0;
-
-top:0;
-
-bottom:0;
-
-overflow-y:auto;
-
-z-index:1050;
-
-transition:.35s;
+box-shadow:
+0 8px 25px rgba(0,0,0,.06);
 
 }
 
-/* Main */
 
-#main{
-
-margin-left:var(--sidebar-width);
-
-width:calc(100% - var(--sidebar-width));
-
-display:flex;
-
-flex-direction:column;
-
-min-height:100vh;
-
-transition:.35s;
-
-}
-
-/* Topbar */
-
-#topbar{
-
-background:white;
-
-height:70px;
-
-display:flex;
-
-align-items:center;
-
-padding:0 25px;
-
-box-shadow:var(--shadow);
-
-position:sticky;
-
-top:0;
-
-z-index:100;
-
-}
-
-/* Content */
 
 #content{
 
+background:white;
+
+border-radius:20px;
+
 padding:25px;
 
-flex:1;
+min-height:75vh;
+
+box-shadow:
+0 8px 25px rgba(0,0,0,.05);
 
 }
 
-/* Loader */
 
-#loader{
 
-position:fixed;
+footer{
 
-inset:0;
+margin-top:30px;
 
-display:none;
+padding:25px;
 
-justify-content:center;
+background:white;
+
+text-align:center;
+
+border-top:1px solid #eee;
+
+}
+
+
+
+#sidebar a{
+
+display:flex;
 
 align-items:center;
 
-background:rgba(255,255,255,.95);
+gap:12px;
 
-backdrop-filter:blur(3px);
+padding:12px 15px;
 
-z-index:99999;
+margin:5px;
 
-}
+border-radius:12px;
 
-/* Mobile Overlay */
+color:#555;
 
-#sidebarOverlay{
+text-decoration:none;
 
-display:none;
-
-position:fixed;
-
-inset:0;
-
-background:rgba(0,0,0,.4);
-
-z-index:1040;
+transition:.3s;
 
 }
 
-/* Responsive */
 
-@media(max-width:991px){
 
-#sidebar{
+#sidebar a:hover,
+#sidebar a.active{
 
-transform:translateX(-100%);
+background:#0d6efd;
 
-}
-
-#sidebar.open{
-
-transform:translateX(0);
-
-}
-
-#sidebarOverlay.show{
-
-display:block;
-
-}
-
-#main{
-
-margin-left:0;
-
-width:100%;
-
-}
+color:white;
 
 }
