@@ -51,6 +51,13 @@ function displayProducts() {
     });
 
 
+Swal.fire({
+    title: "Welcome to Fgshusoft Electronics",
+    text: "Your trusted electronics components partner in Cameroon",
+    icon: "success",
+    confirmButtonText: "Continue"
+});    
+
 }
 
 
