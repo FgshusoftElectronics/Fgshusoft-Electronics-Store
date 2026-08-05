@@ -304,3 +304,32 @@ box-shadow:0 12px 30px rgba(0,0,0,.10);
 }
 
 
+.table tbody tr{
+
+transition:.25s;
+
+}
+
+.table tbody tr:hover{
+
+background:#f8f9fa;
+
+transform:scale(1.01);
+
+}
+
+.list-group-item{
+
+border:none;
+
+padding:16px;
+
+transition:.3s;
+
+}
+
+.list-group-item:hover{
+
+background:#f8f9fa;
+
+}
