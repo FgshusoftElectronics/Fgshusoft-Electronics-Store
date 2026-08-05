@@ -65,15 +65,24 @@ export async function navigate(module){
 
 
 script.onload = ()=>{
-console.log(
-module + " loaded"
-);
+
+    console.log(
+        module + " loaded"
+    );
+
 };
+
+
 script.onerror = ()=>{
-alert(
-"Failed loading: " + module + ".js"
-);
+
+    alert(
+        "Failed loading: " + module + ".js"
+    );
+
 };
+
+
+document.body.appendChild(script);
 
         
 
