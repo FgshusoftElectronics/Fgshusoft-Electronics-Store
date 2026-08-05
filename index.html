@@ -23,93 +23,121 @@
 
 <body>
 
-<header class="bg-primary text-white">
+<!-- ================= NAVBAR ================= -->
 
-<div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow">
 
-<div class="d-flex justify-content-between align-items-center flex-wrap">
+<div class="container-fluid">
 
+<a class="navbar-brand fw-bold" href="#">
 
-<div>
-<h1>
-<i class="fa-solid fa-microchip"></i>
+<i class="fa-solid fa-microchip me-2"></i>
+
 Fgshusoft Electronics
-</h1>
 
-<p>
-La référence en composants électroniques au Cameroun
-</p>
-</div>
-
-
-
-<div>
-
-<button class="btn btn-light position-relative"
-onclick="openCart()">
-
-<i class="fa-solid fa-cart-shopping"></i>
-
-Cart
-
-<span id="cartCount"
-class="badge bg-danger">
-
-0
-
-</span>
-
-</button>
-
-</button>
-
-</div>
-
-
-</div>
-
-
-
-<nav class="navbar navbar-expand-lg navbar-dark">
-
-
-<a class="nav-link text-white" href="#home">
-Home
 </a>
 
 
-<a class="nav-link text-white" href="#shop">
+
+<button
+class="navbar-toggler"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#navbar">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+
+
+<div class="collapse navbar-collapse" id="navbar">
+
+
+<ul class="navbar-nav me-auto">
+
+
+<li class="nav-item">
+
+<a class="nav-link active" href="#">
+
+<i class="fa-solid fa-house"></i>
+
+Home
+
+</a>
+
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#shop">
+<i class="fa-solid fa-store"></i>
 Shop
 </a>
-
-
-<a class="nav-link text-white" href="#training">
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#training">
+<i class="fa-solid fa-graduation-cap"></i>
 Training
+
 </a>
 
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#projects">
 
-<a class="nav-link text-white" href="#contact">
+<i class="fa-solid fa-diagram-project"></i>
+
+Projects
+
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#services">
+<i class="fa-solid fa-screwdriver-wrench"></i>
+Services
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#contact">
+<i class="fa-solid fa-envelope"></i>
 Contact
 </a>
+</li>
+</ul>
 
-
-<button class="btn btn-warning ms-auto">
-
-<i class="fa-solid fa-user"></i>
-
-Login/Register
-
-</button>
-
-
-</nav>
-
-
-
+<form class="d-flex me-3">
+<div class="input-group">
+<span class="input-group-text">
+<i class="fa-solid fa-search"></i>
+</span>
+<input id="globalSearch"
+class="form-control"
+placeholder="Search components...">
 </div>
 
+</form>
+<button class="btn btn-outline-light me-2">
+<i class="fa-regular fa-heart"></i>
+</button>
+  
+<button
+class="btn btn-light position-relative me-2"
+onclick="openCart()">
+<i class="fa-solid fa-cart-shopping"></i>
+<span id="cartCount"
+class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+0
+</span>
+</button>
+<button class="btn btn-warning">
+<i class="fa-solid fa-user"></i>
 
-</header>
+Login
+
+</button>
+</div>
+</div>
+</nav>
 
 
 <section id="home">
