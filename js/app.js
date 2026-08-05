@@ -1,35 +1,42 @@
 // Fgshusoft Electronics Tech
-// Main JavaScript
+// Product Display + Search + Filter
 
 
 console.log("Fgshusoft Electronics website loaded successfully 🚀");
 
 
-// Cart
-
-let cart = [];
-
-const cartCount = document.getElementById("cartCount");
-
 
 // Elements
 
-const productContainer = document.getElementById("products");
-const searchBox = document.getElementById("searchBox");
-const categoryFilter = document.getElementById("categoryFilter");
+const productContainer =
+document.getElementById("products");
+
+
+const searchBox =
+document.getElementById("searchBox");
+
+
+const categoryFilter =
+document.getElementById("categoryFilter");
 
 
 
-// Create categories
+
+// Load categories
 
 function loadCategories(){
 
-    let categories = [
-        ...new Set(products.map(product => product.category))
+
+    const categories = [
+        ...new Set(
+            products.map(product => product.category)
+        )
     ];
 
 
+
     categories.forEach(category => {
+
 
         categoryFilter.innerHTML += `
 
@@ -39,9 +46,13 @@ function loadCategories(){
 
         `;
 
+
     });
 
+
 }
+
+
 
 
 
@@ -51,6 +62,7 @@ function displayProducts(productList = products){
 
 
     productContainer.innerHTML = "";
+
 
 
     productList.forEach(product => {
@@ -63,7 +75,9 @@ function displayProducts(productList = products){
 
 
 <img src="${product.image}"
+
 class="card-img-top"
+
 alt="${product.name}">
 
 
@@ -105,35 +119,22 @@ ${product.price} ${product.currency}
 
 
 
-<div class="d-grid gap-2">
+<button class="btn btn-primary w-100"
 
-
-<button class="btn btn-primary"
 onclick="addToCart(${product.id})">
 
-<i class="fa-solid fa-cart-shopping"></i>
+
+<i class="fa-solid fa-cart-plus"></i>
 
 Add to Cart
 
-</button>
-
-
-
-<button class="btn btn-success"
-onclick="telegramOrder('${product.name}')">
-
-<i class="fa-brands fa-telegram"></i>
-
-Order via Telegram
 
 </button>
 
 
-</div>
-
-
 
 </div>
+
 
 </div>
 
@@ -150,106 +151,50 @@ Order via Telegram
 
 
 
-// Search + Filter
+
+
+// Search + category filter
 
 function filterProducts(){
 
 
-let searchValue =
-searchBox.value.toLowerCase();
-
-
-let category =
-categoryFilter.value;
+    const searchValue =
+    searchBox.value.toLowerCase();
 
 
 
-let filtered = products.filter(product => {
-
-
-let matchSearch =
-product.name.toLowerCase()
-.includes(searchValue);
+    const selectedCategory =
+    categoryFilter.value;
 
 
 
-let matchCategory =
-category === "all" ||
-product.category === category;
+    const filteredProducts =
+    products.filter(product => {
 
 
 
-return matchSearch && matchCategory;
-
-
-});
-
-
-
-displayProducts(filtered);
-
-
-}
+        const matchSearch =
+        product.name
+        .toLowerCase()
+        .includes(searchValue);
 
 
 
-
-// Add to cart
-
-function addToCart(id){
-
-
-const product =
-products.find(item => item.id === id);
+        const matchCategory =
+        selectedCategory === "all" ||
+        product.category === selectedCategory;
 
 
 
-cart.push(product);
+        return matchSearch && matchCategory;
+
+
+    });
 
 
 
-cartCount.innerHTML =
-cart.length;
+    displayProducts(filteredProducts);
 
-
-
-Swal.fire({
-
-title:"Added to cart 🛒",
-
-text:product.name,
-
-icon:"success",
-
-timer:1500,
-
-showConfirmButton:false
-
-});
-
-
-}
-
-
-
-
-// Telegram order
-
-function telegramOrder(productName){
-
-
-Swal.fire({
-
-title:"Telegram Order",
-
-text:"Preparing order for: " + productName,
-
-icon:"info"
-
-});
-
-
-// Later replace with Telegram Bot API
 
 }
 
@@ -265,6 +210,7 @@ filterProducts
 );
 
 
+
 categoryFilter.addEventListener(
 "change",
 filterProducts
@@ -272,7 +218,9 @@ filterProducts
 
 
 
-// Start
+
+
+// Start application
 
 loadCategories();
 
