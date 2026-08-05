@@ -1,3 +1,5 @@
+try{
+
 const products = [
 
 {
@@ -21,6 +23,10 @@ description: "Wireless communication module"
 }
 
 ];
+}
+catch(e){
+  alert( e.message );
+}
 
 
 const container = document.getElementById("products");
