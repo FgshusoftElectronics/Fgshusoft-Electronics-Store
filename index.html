@@ -1,90 +1,736 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-<title>Fgshusoft Electronics Tech</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElectroMart | Electronic Components Store</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google Font -->
+<!--<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+-->
 
-<link rel="stylesheet" href="css/style.css">
+<!-- Inter – Professional UI Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- FontAwesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Animate.css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<link href="css/style.css" rel="stylesheet">
 
 </head>
 
-
 <body>
 
+<header class="main-header">
+  <div class="nav-container">
 
-<header>
+    <div class="logo">
+ 
+ <button class="nav-toggle" onclick="toggleNav()">
+  <i class="fa fa-bars"></i>
+</button>
 
-<h1>Fgshusoft Electronics Tech</h1>
+      <i class="fa fa-microchip logo-icon"  onclick="showClientsAlert();" style="color:#4CAF50;"></i>
+      <div class="logo-text">
+        <span class="brand-main" id = "storeName" >Fgshusoft-<b>Electronics Sarl</b></span>
+        <small class="brand-tagline" id = "storeSlogan">
+          <i style = "font-family:'serif';">La référence en composants électroniques au Cameroun</i>
+        </small>
+      </div>
+    </div>
 
-<p>
-La référence en composants électroniques au Cameroun
-</p>
+    <h1 class="welcome-text" style  = "font-family:'serif';color:4CAF50;">
+      <label>
+      <i class="fa fa-bolt"></i>
+      Welcome to <span id = "storeName1">Fgshusoft-<b>Electronics Sarl</b></span> <i>La référence en composants électroniques au Cameroun.</i>
+      <i class="fa fa-microchip"></i>
+      </label>
+    </h1>
+    
+    <nav class="nav-links">
+      <a href="#" class="active">
+        <i class="fa fa-house"></i> Home
+      </a>
+      <a href="#products">
+        <i class="fa fa-box"></i> Products
+      </a>
+      <a href="#about">
+        <i class="fa fa-circle-info"></i> About
+      </a>
+      <a href="#contact">
+        <i class="fa fa-envelope"></i> Contact
+         </a>
+    <a href="#tutorials">
+        <i class="fa fa-video"></i> Tutorials
+      </a>
+      
+            <a href="#orders">
+        <i class="fa fa-flask"></i> My Orders
+      </a>
 
+      <a href="#users" style="color:red;" id= "logout" onclick="logout();">
+        <i class="fa-solid fa-right-from-bracket" ></i> Logout
+      </a>
+      
+      <button class="mode-toggle" onclick="toggleTheme()" title="Toggle theme">
+        <i class="fa fa-sun"></i>
+      </button>
+    </nav>
+  </div>
 </header>
 
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+   <p><p></p></p> 
+    <div>
+      <h1>Professional Electronic Components Supplier</h1>
+      <p>Arduino boards, sensors, modules, power supplies and accessories for makers, students and professionals.</p>
+      <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Browse Products</button>
+    </div>
+    <img src="./assets/mq2.jpg" alt="Fgshusoft-Electronics" style= "max-height:300px; max-width:300px;border-radius:50%;">
+  </div>
+</section>
 
+<!-- Filters -->
+<section class="container">
+  <div class="row mb-4">
+    <div class="col-md-3 mb-2">
+      <input type="text" id="searchInput" class="form-control" placeholder="Search products...">
+    </div>
+    <div class="col-md-3 mb-2">
+      <select id="categoryFilter" class="form-select">
+        <option value="">All Categories</option>
+        <option value="arduino">Arduino</option>
+        <option value="sensor">Sensor</option>
+        <option value="module">Module</option>
+        <option value="power">Power</option>
+      </select>
+    </div>
+    <div class="col-md-3 mb-2">
+      <select id="stockFilter" class="form-select">
+        <option value="">All Stock</option>
+        <option value="in">In Stock</option>
+        <option value="out">Out of Stock</option>
+      </select>
+    </div>
+    <div class="col-md-3 mb-2">
+      <label class="form-label mb-0">Max Price: <span id="priceValue">$100</span></label>
+      <input type="range" id="priceFilter" class="form-range" min="0" max ="100" value="100">
+    </div>
+  </div>
+</section>
 
-<section>
+<!-- Products -->
+<section id="products" class="container">
+  <h2 class="section-title">Featured Products</h2>
+  <div class="products" id="productGrid">
+  </div>
+</section>
 
-<h2>Our Services</h2>
+<!-- CLIENT INFO + ORDERS CARD -->
+<section class="container features-section py-4">
+  <!-- Section Title -->
+  <div class="d-flex align-items-center gap-2 mb-4 flex-wrap">
+    <i class="fa-solid fa-user fa-lg text-primary"></i>
+    <h2 class="m-0 fw-bold">Client Overview</h2>
+  </div>
 
-<section>
-<h2>Featured Products</h2>
-<div id="products"></div>
+  <!-- Client Info Cards -->
+<div class="container-fluid py-2 px-lg-4 px-3 fade-up">
+  <div class="card border-0 shadow-sm rounded-4">
+    <div class="card-body">
+      <div class="row align-items-center g-3">
+
+        <div class="col-auto col-md-8">
+          <div class="d-flex align-items-center">
+             <div class="flex-shrink-0">
+              <img
+                src="https://ui-avatars.com/api/?name=Fgshusoft+Electronics+Tech&background=0d6efd&color=fff"
+                class="rounded-circle shadow-sm"
+                width="60"
+                height="60"
+                alt="User" 
+                id="logo">
+            </div>
+
+            <div class="flex-grow-1 ms-3">
+              <h5 class="fw-bold mb-1 text-dark">
+                <i class="fa-solid fa-user-circle text-primary me-2"></i>
+                <span id="clientName">
+                  Fgshusoft Electronics Tech
+                </span>
+              </h5>
+              
+              <div class="small text-secondary mb-1">
+                <i class="fa-solid fa-mobile-screen-button me-2 text-success"></i>
+                <span id="clientPhone">
+                  Samsung Note 9
+                </span>
+              </div>
+
+              <div class="small text-muted">
+                <i class="fa-solid fa-envelope me-2 text-warning"></i>
+                <span id="clientEmail">  gilbert3fsg@gmail.com
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-auto col-md-2 text-end">
+          <button class="btn btn-primary rounded-3 px-4 py-2"
+            onclick="showClientsAlert();">
+            <i class="fa-solid fa-eye me-2"></i>
+            <span class="fw-bold"> View</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Divider -->
+  <hr class="card-divider mb-4">
+
+  <!-- Client Orders -->
+  <div class="client-orders" id="orders">
+    <h6 class="d-flex align-items-center gap-2 mb-3">
+      <i class="fa-solid fa-box text-warning"></i>
+      Orders
+    </h6>
+
+    <div class="order-container">
+      <div id="clientOrders" class="orders-list d-flex flex-wrap gap-3 justify-content-start">
+        <!-- Orders will be injected here -->
+      </div>
+    </div>
+  </div>
 </section>
 
 
-<div class="card">
-<h3>Robotics & IoT</h3>
-<p>Smart homes, automation, embedded systems</p>
+<!-- VIDEO SECTION -->
+<section class="video-section" id = "tutorials">
+<div class="container py-4" id="videosSection" style="display:none">
+  <h4 class="mb-3">
+    <i class="fa-solid fa-video text-primary me-2"></i>
+    Tutorials & Updates
+  </h4>
+<div class="video-scroll-wrapper">
+  <button class="scroll-btn scroll-left" id="scrollLeft">
+    <i class="fa fa-chevron-left"></i>
+  </button>
+
+  <div class="video-scroll" id="videoScroll"></div>
+
+  <button class="scroll-btn scroll-right" id="scrollRight">
+    <i class="fa fa-chevron-right"></i>
+  </button>
 </div>
 
-
-<div class="card">
-<h3>Training</h3>
-<p>Programming and electronics courses</p>
 </div>
 
-
+<!-- Video Modal (YouTube only) -->
+<div class="modal fade" id="videoModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header">
+        <h5 class="modal-title" id="videoModalTitle"></h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-0" id="videoModalBody"></div>
+    </div>
+  </div>
+</div>
 </section>
 
+<!-- Features -->
+<section id="about" class="container features-section">
+  <h2 class="section-title">Why Choose Us</h2>
 
+  <div class="features-grid">
 
-<section>
+    <div class="feature-card">
+      <i class="fa-solid fa-microchip"></i>
+      <h4>Quality Components</h4>
+      <p>Original and fully tested electronic components you can trust.</p>
+    </div>
 
-<h2>Featured Products</h2>
+    <div class="feature-card">
+      <i class="fa-solid fa-truck-fast"></i>
+      <h4>Fast Delivery</h4>
+      <p>Quick, reliable, and secure shipping to your location.</p>
+    </div>
 
+    <div class="feature-card">
+      <i class="fa-solid fa-headset"></i>
+      <h4>Technical Support</h4>
+      <p>Expert support for students, makers, and professionals.</p>
+    </div>
 
-<div class="card">
-<h3>ESP32</h3>
-<p>WiFi + Bluetooth Development Board</p>
-</div>
+    <div class="feature-card">
+      <i class="fa-solid fa-tags"></i>
+      <h4>Affordable Prices</h4>
+      <p>Best value pricing without compromising quality.</p>
+    </div>
 
-
-<div class="card">
-<h3>Arduino UNO</h3>
-<p>Microcontroller Development Board</p>
-</div>
-
-<div class="card">
-<h3>Sensors</h3>
-<p>DHT11, MQ2, PIR, Flame sensors</p>
-</div>
-
+  </div>
 </section>
 
-<footer>
+<section class="newsletter py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center newsletter-box p-4 rounded-4 shadow-sm bg-white">
 
-<p>
-© 2026 Fgshusoft Electronics Tech
-</p>
+        <h3 class="mb-2">Stay Updated 🔔</h3>
+        <p class="mb-4 text-muted">Get new products, discounts & electronics tips.</p>
 
+        <!-- Subscriber Count -->
+        <div class="mb-3 text-success fw-bold" id="subscriberCount">
+          <i class="fa fa-users me-1"></i> 0 Subscribers
+        </div>
+
+        <!-- Newsletter Form -->
+        <form id="newsletterForm" class="d-flex gap-2" onsubmit="subscribeNewsletter(event)">
+          <input type="email" id="newsletterEmail" class="form-control" placeholder="Enter your email" required>
+          <button type="submit" class="btn btn-primary">
+            <i class="fa fa-paper-plane me-1"></i> Subscribe
+          </button>
+        </form>
+
+        <!-- Feedback Message -->
+        <div id="newsletterFeedback" class="mt-3 text-center"></div>
+
+        <!-- Optional: Social Media Links -->
+        <div class="mt-4">
+          <a href="#" class="text-decoration-none me-3"><i class="fab fa-facebook fa-lg"></i></a>
+          <a href="#" class="text-decoration-none me-3"><i class="fab fa-twitter fa-lg"></i></a>
+          <a href="#" class="text-decoration-none me-3"><i class="fab fa-instagram fa-lg"></i></a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact" class="site-footer">
+  <div class="footer-inner container">
+    <div class="footer-col">
+      <h4 class="footer-title">Fgshusoft-Electronics</h4>
+      <p>Your trusted electronics components store for Arduino, sensors, modules and power supplies.</p>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-title">Contact</h4>
+      <a href="mailto:Fgshusoft237@Fgshusoft-electronics.com" class="footer-link"><i class="fa fa-envelope"></i> Fgshusoft237@Fgshusoft-electronics.com</a>
+      <a href="https://wa.me/237698252340" target="_blank" class="footer-link"><i class="fab fa-whatsapp"></i> +237 698 252 340</a>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-title">Quick Links</h4>
+      <a href="#home" class="footer-link">Home</a>
+      <a href="#products" class="footer-link">Products</a>
+      <a href="#about" class="footer-link">About</a>
+      <a href="#contact" class="footer-link">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-title">Follow Us</h4>
+      <div class="social-links">
+<a href="https://www.facebook.com/fgshusoftelectonics" target="_blank" rel="noopener" id = "ownerfacebook">
+  <i class="fab fa-facebook-f"></i>
+</a>
+
+<a href="https://www.instagram.com/fgshusoftelectonics" target="_blank" rel="noopener" id = "ownerinstagram">
+  <i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://www.linkedin.com/in/fgshusoftelectonics" target="_blank" rel="noopener" id = "ownerlinkedin">
+  <i class="fab fa-linkedin-in"></i>
+</a>
+
+<a href="https://t.me/fgshusoftelectonics" target="_blank" rel="noopener" id = "ownertelegram">
+  <i class="fab fa-telegram-plane"></i>
+</a>
+
+<a href="https://www.tiktok.com/@fgshusoftelectonics" target="_blank" rel="noopener" id = "ownertiktok">
+  <i class="fab fa-tiktok"></i>
+</a>
+
+<a href="https://wa.me/237698252340" target="_blank" rel="noopener" id ="ownerWhatsapp1">
+  <i class="fab fa-whatsapp"></i>
+</a>
+      </div>
+    </div>
+  </div>
+  <center>
+      <div class="footer-bottom">© <span id="year"></span> <span id = "storeName1" > Fgshusoft-Electronics</span>. All rights reserved.
+      </div>
+<div class="powered-by">
+  <span>Powered by</span>
+  <a href="https://www.Fgshusoftelectonics.org" target="_blank" rel="noopener">
+    Fgshusoft Electronics Tech
+  </a>
+</div>
+      </center>
 </footer>
 
-<script src="js/app.js"></script>
-    
-</body>
+<!-- Cart FAB -->
+<div class="fab-cart" onclick="toggleCart()">
+  <i class="fa fa-shopping-cart"></i>
+  <div class="fab-cart-badge" id="cartCount">0</div>
+</div>
 
-  </html>
+<!-- Cart Modal -->
+<div class="modal fade" id="cartModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content animate__animated animate__fadeIn">
+      <!-- Header -->
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <i class="fa fa-shopping-cart me-2 text-primary"></i>Your Cart
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <!-- Body -->
+      <div class="modal-body">
+        <div class="table-responsive">
+          <table class="table align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>Product</th>
+                <th width="140">Quantity</th>
+                <th width="120">Subtotal</th>
+                <th width="60"></th>
+              </tr>
+            </thead>
+            <tbody id="cartItems">
+            </tbody>
+          </table>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          <strong>Total:</strong>
+          <strong class="fs-5 text-primary">
+            $<span id="cartTotal">0.00</span>
+          </strong>
+        </div>
+      </div>
+      <!-- Footer -->
+      <div class="modal-footer justify-content-between">
+        <button class="btn btn-outline-danger" onclick="clearCart()">
+          <i class="fa fa-trash me-1"></i>Clear Cart
+        </button>
+        <div>
+          <button class="btn btn-secondary me-2" data-bs-dismiss="modal">
+            <i class="fa fa-times me-1"></i>Close
+          </button>
+          <button class="btn btn-success" onclick="placeOrder()">
+            <i class="fa fa-check me-1"></i>Place Order
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Product Detail Modal -->
+<div class="modal fade" id="productDetailModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content animate__animated animate__fadeIn">
+      <div class="modal-header">
+        <h5 class="modal-title" id="productDetailTitle">Product Name</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body d-flex flex-column flex-md-row align-items-center gap-3">
+        <img id="productDetailImg" src="" alt="Product" class="img-fluid rounded" style="Fgshusoft-width:300px;">
+        <div class="flex-fill">
+          <p id="productDetailDesc">Product description goes here.</p>
+          <h5 class="text-primary" id="productDetailPrice">$0.00</h5>
+          <span id="productDetailStock" class="badge bg-success mb-2">In Stock</span><br>
+          <button class="btn btn-success mt-2" id="productDetailAddBtn"><i class="fa fa-cart-plus me-1"></i>Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLIENT INFO MODAL -->
+<div class="modal fade" id="clientInfoModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content rounded-4">
+
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <i class="fa-solid fa-user"></i> Client Information
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body" id="clientInfoBody">
+        <div class="text-center py-4 text-muted">
+          <i class="fa fa-spinner fa-spin"></i> Loading client data...
+        </div>
+      </div>
+
+      <div class="modal-footer">
+ <button class="btn btn-outline-primary"
+  onclick=" printClientProfile(currentClientId)">
+  <i class="fa fa-print"></i> Print Profile
+ </button>
+
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- JS Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+window.addEventListener("scroll", () => {
+  document.querySelector("header")
+    .classList.toggle("scrolled", window.scrollY > 20);
+});
+
+</script>
+
+<a href="https://wa.me/237698252340"
+  target="_blank"
+  class="whatsapp-float"
+  aria-label="Chat on WhatsApp"
+id = "ownerWhatsapp">
+  <i class="fab fa-whatsapp"></i>
+  <span class="whatsapp-tooltip">Chat with us</span>
+</a>
+
+<!-- Firebase -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import { getFirestore, collection, doc, onSnapshot, updateDoc, increment, getDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD2U07u1C-gxdg2wk0Q9LUDgv958u8fN8Y",
+  authDomain: "Fgshusoft-electronics-69ba2.firebaseapp.com",
+  projectId: "Fgshusoft-electronics-69ba2",
+  storageBucket: "Fgshusoft-electronics-69ba2.firebasestorage.app",
+  messagingSenderId: "974351944204",
+  appId: "1:974351944204:web:19131c9178499e51987c29"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth();
+
+let CURRENT_USER = null;
+
+onAuthStateChanged(auth, user => {
+  if (user) {
+    CURRENT_USER = user.uid;
+    document.getElementById("videosSection").style.display = "block";
+  } else {
+    window.location.href = "login.html";
+  }
+});
+
+function parseVideo(url) {
+  try {
+    const u = new URL(url);
+
+    if (u.hostname.includes("youtu.be")) {
+      const id = u.pathname.slice(1);
+      return {
+        type: "youtube",
+        embed: `https://www.youtube.com/embed/${id}`,
+        thumb: `https://img.youtube.com/vi/${id}/hqdefault.jpg`
+      };
+    }
+
+    /* ===== YouTube full / shorts ===== */
+    if (u.hostname.includes("youtube.com")) {
+      let id = null;
+
+      if (u.pathname.startsWith("/shorts/")) {
+        id = u.pathname.split("/")[2];
+      } else {
+        id = u.searchParams.get("v");
+      }
+
+      if (!id) return null;
+
+      return {
+        type: "youtube",
+        embed: `https://www.youtube.com/embed/${id}`,
+        thumb: `https://img.youtube.com/vi/${id}/hqdefault.jpg`
+      };
+    }
+
+    /* ===== TikTok ===== */
+    if (u.hostname.includes("tiktok.com")) {
+      return {
+        type: "tiktok",
+        url,
+        thumb: "https://via.placeholder.com/300x150?text=TikTok"
+      };
+    }
+
+    return null;
+  } catch (err) {
+    return null;
+  }
+}
+
+function renderVideos(snapshot) {
+  const container = document.getElementById("videoScroll");
+  container.innerHTML = "";
+
+  snapshot.forEach(docSnap => {
+    const v = docSnap.data();
+    if (!v?.videoUrl) return;
+
+    const parsed = parseVideo(v.videoUrl);
+    if (!parsed) return;
+
+    const cardClick =
+      parsed.type === "tiktok"
+        ? `openTikTok('${parsed.url}','${docSnap.id}')`
+        : `playVideo('${docSnap.id}')`;
+
+    container.innerHTML += `
+      <div class="video-card" onclick="${cardClick}">
+        <div class="video-thumb"
+             style="background-image:url('${parsed.thumb}')"></div>
+
+        <div class="video-body">
+          <div class="video-title">${v.title || ""}</div>
+          <div class="video-meta">${v.channel || ""}</div>
+
+          <div class="icons-row">
+            <button class="like ${v.userActions?.[CURRENT_USER] === "like" ? "active" : ""}"
+                    onclick="likeVideo(event,'${docSnap.id}')">
+              <i class="fa fa-thumbs-up"></i> ${v.likes || 0}
+            </button>
+
+            <button class="dislike ${v.userActions?.[CURRENT_USER] === "dislike" ? "active" : ""}"
+                    onclick="dislikeVideo(event,'${docSnap.id}')">
+              <i class="fa fa-thumbs-down"></i> ${v.dislikes || 0}
+            </button>
+
+            <button disabled>
+              <i class="fa fa-eye"></i> ${v.views || 0}
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+onSnapshot(collection(db, "videos"), renderVideos);
+
+window.likeVideo = async (e, id) => {
+  e.stopPropagation();
+
+  const ref = doc(db, "videos", id);
+  const snap = await getDoc(ref);
+  const v = snap.data();
+
+  if (v.userActions?.[CURRENT_USER] === "like") return;
+
+  await updateDoc(ref, {
+    likes: increment(1),
+    dislikes:
+      v.userActions?.[CURRENT_USER] === "dislike"
+        ? increment(-1)
+        : increment(0),
+    [`userActions.${CURRENT_USER}`]: "like"
+  });
+};
+
+window.dislikeVideo = async (e, id) => {
+  e.stopPropagation();
+
+  const ref = doc(db, "videos", id);
+  const snap = await getDoc(ref);
+  const v = snap.data();
+
+  if (v.userActions?.[CURRENT_USER] === "dislike") return;
+
+  await updateDoc(ref, {
+    dislikes: increment(1),
+    likes:
+      v.userActions?.[CURRENT_USER] === "like"
+        ? increment(-1)
+        : increment(0),
+    [`userActions.${CURRENT_USER}`]: "dislike"
+  });
+};
+
+window.playVideo = async id => {
+  const ref = doc(db, "videos", id);
+  const snap = await getDoc(ref);
+  const v = snap.data();
+
+  const parsed = parseVideo(v.videoUrl);
+  if (!parsed) return;
+
+  document.getElementById("videoModalTitle").innerText = v.title || "";
+  document.getElementById("videoModalBody").innerHTML = `
+    <div class="ratio ratio-16x9">
+      <iframe src="${parsed.embed}?autoplay=1" allowfullscreen></iframe>
+    </div>
+  `;
+
+  if (!v.viewedUsers?.[CURRENT_USER]) {
+    await updateDoc(ref, {
+      views: increment(1),
+      [`viewedUsers.${CURRENT_USER}`]: true
+    });
+  }
+
+  new bootstrap.Modal(document.getElementById("videoModal")).show();
+};
+
+window.openTikTok = async (url, id) => {
+  const ref = doc(db, "videos", id);
+  const snap = await getDoc(ref);
+  const v = snap.data();
+
+  if (!v.viewedUsers?.[CURRENT_USER]) {
+    await updateDoc(ref, {
+      views: increment(1),
+      [`viewedUsers.${CURRENT_USER}`]: true
+    });
+  }
+
+  window.open(url, "_blank");
+};
+
+window.toggleNav = function () {
+  document.querySelector('.nav-links').classList.toggle('show');
+}
+
+window.toggleDrawer = function() {
+  document.getElementById("sideDrawer").classList.toggle("open");
+  document.querySelector(".drawer-overlay").classList.toggle("show");
+}
+
+</script>
+
+<!-- Client JS -->
+<script type="module" src="js/app.js"></script>
+
+</body>
+</html>
