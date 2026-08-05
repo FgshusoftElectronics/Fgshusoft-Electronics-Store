@@ -854,3 +854,81 @@ z-index:999;
 }
 
 
+
+
+/* ================= SERVICES ================= */
+
+
+.service-card{
+
+background:white;
+
+padding:35px 25px;
+
+border-radius:20px;
+
+text-align:center;
+
+height:100%;
+
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+transition:.35s;
+
+}
+
+
+
+.service-card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 20px 45px rgba(0,0,0,.15);
+
+}
+
+
+
+.service-icon{
+
+width:80px;
+
+height:80px;
+
+border-radius:50%;
+
+margin:auto;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:35px;
+
+color:white;
+
+margin-bottom:20px;
+
+}
+
+
+
+.service-card h4{
+
+font-weight:700;
+
+}
+
+
+
+.service-card a{
+
+text-decoration:none;
+
+font-weight:600;
+
+color:#0d6efd;
+
+}
