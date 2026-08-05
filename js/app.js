@@ -25,42 +25,71 @@ function displayProducts() {
     products.forEach(product => {
 
 
-        productContainer.innerHTML += `
+productContainer.innerHTML += `
 
-        <div class="product-card">
+<div class="card shadow-sm h-100 product-card">
 
-            <h3>${product.name}</h3>
+    <img src="${product.image}" 
+    class="card-img-top"
+    alt="${product.name}">
 
-            <p>
-            Category: ${product.category}
-            </p>
 
-            <p>
-            ${product.description}
-            </p>
+    <div class="card-body">
 
-            <strong>
-            ${product.price} ${product.currency}
-            </strong>
+        <h5 class="card-title">
+        <i class="fa-solid ${product.icon} text-primary"></i>
+        ${product.name}
+        </h5>
 
-        </div>
 
-        `;
+        <p class="text-muted">
+        ${product.category}
+        </p>
+
+
+        <p>
+        ${product.description}
+        </p>
+
+
+        <h4 class="text-success">
+        ${product.price} ${product.currency}
+        </h4>
+
+
+        <button class="btn btn-primary w-100"
+        onclick="addToCart('${product.name}')">
+
+        <i class="fa-solid fa-cart-shopping"></i>
+        Add to Cart
+
+        </button>
+
+
+    </div>
+
+</div>
+
+`;
 
 
     });
 
 
-Swal.fire({
-    title: "Welcome to Fgshusoft Electronics",
-    text: "Your trusted electronics components partner in Cameroon",
-    icon: "success",
-    confirmButtonText: "Continue"
-});    
-
 }
 
+function addToCart(productName){
 
+    Swal.fire({
+
+        title: "Added to cart",
+        text: productName + " has been added",
+        icon: "success",
+        confirmButtonText: "OK"
+
+    });
+
+}
 
 // Load products when page opens
 
