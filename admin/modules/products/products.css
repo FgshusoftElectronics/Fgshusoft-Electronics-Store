@@ -1,1 +1,49 @@
+.module-header h2{
 
+font-weight:700;
+
+}
+
+
+#productsTable img{
+
+object-fit:cover;
+
+}
+
+
+.table{
+
+background:white;
+
+}
+
+
+.table thead{
+
+background:#f8f9fa;
+
+}
+
+
+.table tbody tr{
+
+transition:.2s;
+
+}
+
+
+.table tbody tr:hover{
+
+background:#f1f5ff;
+
+}
+
+
+.badge{
+
+padding:8px 12px;
+
+border-radius:20px;
+
+}
