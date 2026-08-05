@@ -43,50 +43,20 @@ const products = [
 
 ];
 
-
-
 const table =
 document.getElementById("productsTable");
 
-if(!table){
-throw new Error(
-"productsTable element not found"
-);
-}
-debug("Table found");
-    
-
-
-    
-
-
 function displayProducts(list = products){
-
-
     table.innerHTML="";
-
-
     list.forEach(product=>{
-
-
         table.innerHTML += `
-
-
 <tr>
-
-
 <td>
-
 <img src="${product.image}"
-
 width="50"
-
 height="50"
-
 class="rounded shadow-sm"
-
 onerror="this.src='../../images/no-image.png'">
-
 </td>
 
 
