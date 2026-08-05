@@ -549,16 +549,10 @@ transform:scale(1.05);
 
 
 .course-card{
-
 border-radius:20px;
-
 overflow:hidden;
-
 transition:.35s;
-
 }
-
-
 
 .course-card:hover{
 
@@ -568,21 +562,32 @@ box-shadow:0 20px 40px rgba(0,0,0,.15)!important;
 
 }
 
-
-
 .course-card img{
-
 height:220px;
-
 object-fit:cover;
-
 }
-
-
 
 .course-card h5{
-
 font-weight:700;
-
 }
 
+/* ================= PROJECTS ================= */
+.project-card{
+border-radius:20px;
+overflow:hidden;
+transition:.35s;
+}
+
+.project-card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 45px rgba(0,0,0,.15)!important;
+}
+
+.project-card img{
+height:240px;
+object-fit:cover;
+}
+
+.project-card .badge{
+margin-right:5px;
+}
