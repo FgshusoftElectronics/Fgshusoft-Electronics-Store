@@ -629,22 +629,54 @@ box-shadow:0 18px 35px rgba(0,0,0,.15);
 
 }
 
-
-
 .brand-card i{
-
 font-size:45px;
-
 color:#0d6efd;
-
 margin-bottom:15px;
+}
 
+.brand-card h5{
+font-weight:700;
 }
 
 
 
-.brand-card h5{
+/* ================= TESTIMONIALS ================= */
+.testimonial-card{
+max-width:700px;
+background:white;
+padding:40px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,.1);
+}
 
+.avatar{
+width:80px;
+height:80px;
+border-radius:50%;
+background:#0d6efd;
+color:white;
+font-size:35px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:auto;
+}
+
+.stars{
+color:#ffc107;
+font-size:25px;
+margin:20px 0;
+}
+
+.testimonial-card p{
+font-size:18px;
+font-style:italic;
+color:#555;
+}
+
+.testimonial-card h5{
 font-weight:700;
-
+margin-top:20px;
 }
