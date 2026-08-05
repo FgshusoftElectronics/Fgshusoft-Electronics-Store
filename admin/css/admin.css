@@ -163,3 +163,33 @@ footer a:hover{
 color:#0d6efd;
 
 }
+
+
+
+/* =========================
+   Global Loader
+========================= */
+
+#loader{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(255,255,255,.85);
+
+    backdrop-filter:blur(2px);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:99999;
+
+}
