@@ -5,39 +5,19 @@
 console.log("Fgshusoft Electronics website loaded successfully 🚀");
 
 
-// Temporary products data
-// Later this will come from Firebase Firestore
-
-const products = [
-
-    {
-        name: "ESP32 Development Board",
-        category: "IoT",
-        price: "5000 FCFA"
-    },
-
-    {
-        name: "Arduino UNO R3",
-        category: "Microcontroller",
-        price: "7000 FCFA"
-    },
-
-    {
-        name: "DHT11 Temperature Sensor",
-        category: "Sensors",
-        price: "1500 FCFA"
-    }
-
-];
-
-
 
 // Display products
 
 const productContainer = document.getElementById("products");
 
 
-function displayProducts(){
+function displayProducts() {
+
+    if (!productContainer) {
+        console.error("Product container not found");
+        return;
+    }
+
 
     productContainer.innerHTML = "";
 
@@ -55,8 +35,12 @@ function displayProducts(){
             Category: ${product.category}
             </p>
 
+            <p>
+            ${product.description}
+            </p>
+
             <strong>
-            ${product.price}
+            ${product.price} ${product.currency}
             </strong>
 
         </div>
@@ -68,6 +52,7 @@ function displayProducts(){
 
 
 }
+
 
 
 // Load products when page opens
