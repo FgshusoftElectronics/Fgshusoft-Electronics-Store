@@ -1,3 +1,8 @@
+import {checkAuth} from "./auth.js";
+checkAuth();
+
+
+
 import {
     loadSidebar,
     loadTopbar,
