@@ -10,9 +10,14 @@ export async function navigate(module){
     try{
 
 
-        const response = await fetch(
-            `modules/${module}/${module}.html`
-        );
+const url =
+`modules/${module}/${module}.html`;
+
+alert("Trying to load:\n" + url);
+
+
+const response =
+await fetch(url);
 
 
         if(!response.ok){
