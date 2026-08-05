@@ -766,3 +766,14 @@ color:white;
 .social-links a:hover{
 transform:translateY(-5px);
 }
+
+
+html{
+scroll-behavior:smooth;
+}
+
+
+
+
+
+
