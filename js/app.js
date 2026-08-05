@@ -307,12 +307,60 @@ categoryFilter.addEventListener(
 filterProducts
 );
 
+// Display Featured Products
+function displayFeaturedProducts(){
+const featuredContainer =
+document.getElementById("featuredProducts");
 
-
-
+if(!featuredContainer) return;
+const featured =
+products.filter(product => product.featured);
+featuredContainer.innerHTML = "";
+featured.forEach(product => {
+featuredContainer.innerHTML += `
+<div class="col-md-6 col-lg-3">
+<div class="card featured-card h-100 border-0 shadow">
+<div class="position-relative">
+<img src="${product.image}"
+class="card-img-top"
+style="height:220px;object-fit:cover;">
+<span class="badge bg-danger position-absolute top-0 start-0 m-2">
+🔥 Featured
+</span>
+</div>
+<div class="card-body">
+<h5 class="fw-bold">
+${product.name}
+</h5>
+<div class="text-warning mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+<p class="text-muted">
+${product.category}
+</p>
+<h4 class="text-success">
+${product.price} ${product.currency}
+</h4>
+<button
+class="btn btn-primary w-100"
+onclick="addToCart(${product.id})">
+<i class="fa-solid fa-cart-plus"></i>
+Add To Cart
+</button>
+</div>
+</div>
+</div>
+`;
+});
+}
 
 // Start application
 
 loadCategories();
-
 displayProducts();
+displayFeaturedProducts();
+
