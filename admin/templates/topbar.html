@@ -1,67 +1,78 @@
-<div class="d-flex justify-content-between align-items-center">
+<nav class="navbar navbar-expand-lg bg-white shadow-sm">
+
+<div class="container-fluid">
 
 
-<div>
+<a class="navbar-brand fw-bold text-primary">
 
-<h5 class="mb-0">
+<i class="fa-solid fa-microchip"></i>
 
 Fgshusoft Control Center
 
-</h5>
-
-
-<small id="breadcrumb">
-
-Home
-
-</small>
-
-</div>
+</a>
 
 
 
-<div class="d-flex align-items-center gap-3">
+<button class="navbar-toggler"
+data-bs-toggle="collapse"
+data-bs-target="#adminNav">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
 
 
-<button class="btn btn-light">
+
+<div class="collapse navbar-collapse"
+id="adminNav">
+
+
+<ul class="navbar-nav ms-auto">
+
+
+<li class="nav-item">
+
+<a class="nav-link">
 
 <i class="fa-solid fa-bell"></i>
 
-</button>
+</a>
+
+</li>
 
 
-<div class="dropdown">
 
+<li class="nav-item dropdown">
 
-<button 
-class="btn btn-light dropdown-toggle"
+<a class="nav-link dropdown-toggle"
 data-bs-toggle="dropdown">
 
-<i class="fa-solid fa-user"></i>
+<i class="fa-solid fa-user-circle"></i>
 
-Administrator
+Admin
 
-</button>
+</a>
 
 
-<ul class="dropdown-menu">
+<ul class="dropdown-menu dropdown-menu-end">
 
 <li>
 <a class="dropdown-item">
-
 Profile
-
 </a>
 </li>
-
 
 <li>
-<a class="dropdown-item">
-
+<a class="dropdown-item text-danger">
 Logout
-
 </a>
 </li>
+
+</ul>
+
+
+</li>
+
 
 </ul>
 
@@ -71,5 +82,4 @@ Logout
 
 </div>
 
-
-</div>
+</nav>
