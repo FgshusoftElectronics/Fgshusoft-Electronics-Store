@@ -380,3 +380,17 @@ flex-shrink:0;
 box-shadow:0 5px 15px rgba(0,0,0,.15);
 
 }
+
+
+.product-row{
+
+transition:.3s;
+
+}
+
+
+.product-row:hover{
+
+background:#f8f9fa;
+
+}
