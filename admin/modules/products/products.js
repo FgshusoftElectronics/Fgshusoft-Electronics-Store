@@ -1,71 +1,64 @@
 const products = [
 
 {
-id:1,
-
-name:"ESP32 Development Board",
-
-category:"IoT",
-
-price:"5000 FCFA",
-
-stock:25,
-
-image:"../../images/esp32.jpg"
-
+    id:1,
+    name:"ESP32 Development Board",
+    category:"IoT",
+    price:5000,
+    stock:25,
+    image:"../../images/esp32.jpg"
 },
 
 
 {
-id:2,
-
-name:"Arduino UNO R3",
-
-category:"Microcontroller",
-
-price:"7000 FCFA",
-
-stock:15,
-
-image:"../../images/arduino.jpg"
-
+    id:2,
+    name:"Arduino UNO R3",
+    category:"Microcontrollers",
+    price:7000,
+    stock:15,
+    image:"../../images/arduino.jpg"
 },
 
 
 {
-id:3,
+    id:3,
+    name:"DHT11 Temperature Sensor",
+    category:"Sensors",
+    price:1500,
+    stock:40,
+    image:"../../images/dht11.jpg"
+},
 
-name:"DHT11 Sensor",
 
-category:"Sensors",
-
-price:"1500 FCFA",
-
-stock:40,
-
-image:"../../images/dht11.jpg"
-
+{
+    id:4,
+    name:"5V 40A Power Supply",
+    category:"Power",
+    price:25000,
+    stock:8,
+    image:"../../images/power.jpg"
 }
+
 
 ];
 
-
-
-function renderProducts(){
 
 
 const table =
 document.getElementById("productsTable");
 
 
-table.innerHTML="";
+
+function displayProducts(list = products){
 
 
+    table.innerHTML="";
 
-products.forEach(product=>{
+
+    list.forEach(product=>{
 
 
-table.innerHTML += `
+        table.innerHTML += `
 
 
 <tr>
@@ -79,7 +72,9 @@ width="50"
 
 height="50"
 
-class="rounded">
+class="rounded shadow-sm"
+
+onerror="this.src='../../images/no-image.png'">
 
 </td>
 
@@ -99,7 +94,7 @@ ${product.name}
 
 <td>
 
-<span class="badge bg-info">
+<span class="badge bg-primary">
 
 ${product.category}
 
@@ -111,7 +106,7 @@ ${product.category}
 
 <td>
 
-${product.price}
+${product.price.toLocaleString()} FCFA
 
 </td>
 
@@ -128,6 +123,35 @@ ${product.stock}
 <td>
 
 
+${
+product.stock > 0
+
+?
+
+`<span class="badge bg-success">
+
+Available
+
+</span>`
+
+:
+
+`<span class="badge bg-danger">
+
+Out of Stock
+
+</span>`
+
+}
+
+
+</td>
+
+
+
+<td>
+
+
 <button class="btn btn-sm btn-warning">
 
 <i class="fa-solid fa-pen"></i>
@@ -135,7 +159,10 @@ ${product.stock}
 </button>
 
 
-<button class="btn btn-sm btn-danger">
+<button 
+class="btn btn-sm btn-danger"
+onclick="deleteProduct(${product.id})">
+
 
 <i class="fa-solid fa-trash"></i>
 
@@ -150,6 +177,123 @@ ${product.stock}
 
 `;
 
+
+
+    });
+
+
+}
+
+
+
+function searchProducts(){
+
+
+const keyword =
+document.getElementById(
+"searchProduct"
+).value.toLowerCase();
+
+
+
+const filtered =
+products.filter(product=>
+
+product.name
+.toLowerCase()
+.includes(keyword)
+
+);
+
+
+
+displayProducts(filtered);
+
+
+}
+
+
+
+
+function filterCategory(){
+
+
+const category =
+document.getElementById(
+"categoryFilter"
+).value;
+
+
+
+if(category==="all"){
+
+displayProducts();
+
+return;
+
+}
+
+
+
+const filtered =
+products.filter(product=>
+
+product.category === category
+
+);
+
+
+
+displayProducts(filtered);
+
+
+}
+
+
+
+
+function deleteProduct(id){
+
+
+const product =
+products.find(
+p=>p.id===id
+);
+
+
+
+Swal.fire({
+
+title:"Delete product?",
+
+text:product.name,
+
+icon:"warning",
+
+showCancelButton:true,
+
+confirmButtonText:"Yes, delete"
+
+}).then(result=>{
+
+
+if(result.isConfirmed){
+
+
+Swal.fire(
+
+"Deleted!",
+
+"Product removed",
+
+"success"
+
+);
+
+
+}
+
+
 });
 
 
@@ -157,4 +301,28 @@ ${product.stock}
 
 
 
-renderProducts();
+
+// Events
+
+
+document
+.getElementById("searchProduct")
+.addEventListener(
+"input",
+searchProducts
+);
+
+
+
+document
+.getElementById("categoryFilter")
+.addEventListener(
+"change",
+filterCategory
+);
+
+
+
+// Initial load
+
+displayProducts();
