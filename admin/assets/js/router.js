@@ -10,14 +10,17 @@ export async function navigate(module){
     try{
 
 
-const url =
-`modules/${module}/${module}.html`;
+        // =========================
+        // Load HTML module
+        // =========================
 
-alert("Trying to load:\n" + url);
+        const htmlUrl =
+        `modules/${module}/${module}.html?v=${Date.now()}`;
 
 
-const response =
-await fetch(url);
+        const response =
+        await fetch(htmlUrl);
+
 
 
         if(!response.ok){
@@ -29,8 +32,10 @@ await fetch(url);
         }
 
 
+
         const html =
         await response.text();
+
 
 
         document
@@ -39,38 +44,10 @@ await fetch(url);
 
 
 
+
         // =========================
-        // Load Module JavaScript
+        // Remove previous JS module
         // =========================
-
-        const oldScript =
-        document.getElementById("module-script");
-
-
-        if(oldScript){
-
-            oldScript.remove();
-
-        }
-
-
-// =========================
-// Load Module JavaScript if available
-// =========================
-
-const scriptUrl =
-`modules/${module}/${module}.js`;
-
-
-try {
-
-
-    const jsCheck =
-    await fetch(scriptUrl);
-
-
-    if(jsCheck.ok){
-
 
         const oldScript =
         document.getElementById(
@@ -85,53 +62,63 @@ try {
         }
 
 
-        const script =
-        document.createElement("script");
 
 
-        script.type="module";
+        // =========================
+        // Load JS if available
+        // =========================
 
-        script.id="module-script";
-
-        script.src=scriptUrl;
-
-
-        document.body.appendChild(script);
+        const jsUrl =
+        `modules/${module}/${module}.js?v=${Date.now()}`;
 
 
-    }
+        const jsResponse =
+        await fetch(jsUrl);
 
 
-}
 
-catch(error){
-
-    console.log(
-        "No JS module for",
-        module
-    );
-
-}
+        if(jsResponse.ok){
 
 
-script.onerror = ()=>{
-    alert( "Failed loading: " + module + ".js" );
-};
+            const script =
+            document.createElement(
+                "script"
+            );
 
 
-document.body.appendChild(script);
+            script.type =
+            "module";
 
-        
+
+            script.id =
+            "module-script";
+
+
+            script.src =
+            jsUrl;
+
+
+
+            document.body.appendChild(
+                script
+            );
+
+
+        }
+
+
 
 
 
 
         // =========================
-        // Update active menu
+        // Active sidebar
         // =========================
 
         document
-        .querySelectorAll("#sidebar a")
+        .querySelectorAll(
+            "#sidebar a"
+        )
         .forEach(link=>{
 
 
@@ -140,7 +127,9 @@ document.body.appendChild(script);
             );
 
 
-            if(link.dataset.page === module){
+            if(
+            link.dataset.page === module
+            ){
 
                 link.classList.add(
                     "active"
@@ -154,8 +143,10 @@ document.body.appendChild(script);
 
 
 
+
+
         // =========================
-        // Update breadcrumb
+        // Breadcrumb
         // =========================
 
         const breadcrumb =
@@ -164,7 +155,9 @@ document.body.appendChild(script);
         );
 
 
+
         if(breadcrumb){
+
 
             breadcrumb.innerHTML = `
 
@@ -172,11 +165,19 @@ document.body.appendChild(script);
 
             /
 
-            ${module.charAt(0).toUpperCase()+module.slice(1)}
+            ${
+            module.charAt(0).toUpperCase()
+            +
+            module.slice(1)
+            }
 
             `;
 
+
         }
+
+
+
 
 
     }
@@ -188,9 +189,11 @@ document.body.appendChild(script);
         console.error(error);
 
 
+
         document
         .getElementById("content")
         .innerHTML = `
+
 
         <div class="alert alert-danger">
 
@@ -200,12 +203,21 @@ document.body.appendChild(script);
 
         </div>
 
+
         `;
 
 
     }
 
 
-    hideLoader();
+
+    finally{
+
+
+        hideLoader();
+
+
+    }
+
 
 }
