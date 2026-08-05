@@ -5,100 +5,115 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <title>
 Fgshusoft Control Center
 </title>
 
-<!-- Bootstrap -->
+
 <link
 href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
 rel="stylesheet">
 
-<!-- Font Awesome -->
+
 <link
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 rel="stylesheet">
 
-<!-- Google Fonts -->
-<link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-rel="stylesheet">
 
-<!-- Admin Styles -->
 <link
 href="assets/css/admin.css"
 rel="stylesheet">
 
+
 </head>
+
 
 <body>
 
-<div id="app">
 
-    <!-- Sidebar -->
+<!-- TOPBAR -->
 
-    <aside id="sidebar"></aside>
+<header id="topbar"></header>
 
-    <!-- Overlay (Mobile) -->
 
-    <div id="sidebarOverlay"></div>
 
-    <!-- Main Area -->
+<div class="container-fluid">
 
-    <div id="main">
 
-        <!-- Topbar -->
+<div class="row">
 
-        <header id="topbar"></header>
 
-        <!-- Page -->
+<!-- SIDEBAR -->
 
-        <main id="content"
-        class="container-fluid py-4">
+<aside 
+class="col-lg-3 col-xl-2 py-4"
+id="sidebar">
 
-        </main>
+</aside>
 
-    </div>
+
+
+<!-- MAIN -->
+
+<main 
+class="col-lg-9 col-xl-10 py-4">
+
+
+<div id="content">
 
 </div>
 
-<!-- Loader -->
+
+</main>
+
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- FOOTER -->
+
+<footer id="footer">
+
+</footer>
+
+
+
+<!-- LOADER -->
 
 <div id="loader">
 
-    <div class="text-center">
-
-        <div class="spinner-border text-primary mb-3"
-        role="status">
-
-        </div>
-
-        <h6 class="text-secondary">
-
-            Loading...
-
-        </h6>
-
-    </div>
+<div class="spinner-border text-primary">
 
 </div>
 
-<!-- Bootstrap -->
+</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- SweetAlert2 -->
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!-- Main App -->
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<script
+src="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+</script>
+
 
 <script
 type="module"
-src="assets/js/app.js"></script>
+src="assets/js/app.js">
+</script>
+
 
 </body>
 
