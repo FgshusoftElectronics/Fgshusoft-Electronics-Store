@@ -1,0 +1,49 @@
+#sidebar a{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+padding:12px 18px;
+
+color:#555;
+
+text-decoration:none;
+
+border-radius:12px;
+
+margin:5px 10px;
+
+transition:.3s;
+
+}
+
+
+
+#sidebar a:hover{
+
+background:#f1f5ff;
+
+color:#0d6efd;
+
+}
+
+#sidebar a.active{
+
+background:#0d6efd;
+
+color:white;
+
+}
+
+
+
+#sidebar a i{
+
+width:20px;
+
+text-align:center;
+
+}
