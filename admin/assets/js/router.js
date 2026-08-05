@@ -79,11 +79,7 @@ script.onload = ()=>{
 
 
 script.onerror = ()=>{
-
-    alert(
-        "Failed loading: " + module + ".js"
-    );
-
+    alert( "Failed loading: " + module + ".js" );
 };
 
 
