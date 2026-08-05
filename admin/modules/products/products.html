@@ -1,8 +1,12 @@
-<div class="module-header d-flex justify-content-between align-items-center mb-4">
+<div class="container-fluid">
+
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
 
 <div>
 
-<h2>
+<h2 class="fw-bold">
 
 <i class="fa-solid fa-box text-primary"></i>
 
@@ -10,9 +14,10 @@ Products
 
 </h2>
 
+
 <p class="text-muted">
 
-Manage your electronic components inventory
+Manage Fgshusoft Electronics inventory
 
 </p>
 
@@ -32,15 +37,14 @@ Add Product
 
 
 
-
-
 <div class="card shadow-sm border-0 rounded-4">
 
 
 <div class="card-body">
 
 
-<div class="row mb-4">
+
+<div class="row mb-3">
 
 
 <div class="col-md-6">
@@ -54,12 +58,9 @@ Add Product
 </span>
 
 
-<input
-
-id="productSearch"
-
+<input 
+id="searchProduct"
 class="form-control"
-
 placeholder="Search products...">
 
 
@@ -72,10 +73,12 @@ placeholder="Search products...">
 <div class="col-md-3">
 
 
-<select class="form-select">
+<select 
+id="categoryFilter"
+class="form-select">
 
 
-<option>
+<option value="all">
 
 All Categories
 
@@ -103,6 +106,13 @@ Microcontrollers
 </option>
 
 
+<option>
+
+Power
+
+</option>
+
+
 </select>
 
 
@@ -115,14 +125,14 @@ Microcontrollers
 
 
 
-
 <div class="table-responsive">
 
 
 <table class="table align-middle">
 
 
-<thead>
+<thead class="table-light">
+
 
 <tr>
 
@@ -136,9 +146,13 @@ Microcontrollers
 
 <th>Stock</th>
 
+<th>Status</th>
+
 <th>Actions</th>
 
+
 </tr>
+
 
 </thead>
 
@@ -157,5 +171,9 @@ Microcontrollers
 
 
 </div>
+
+
+</div>
+
 
 </div>
