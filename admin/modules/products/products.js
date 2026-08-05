@@ -167,7 +167,7 @@ onclick="deleteProduct(${product.id})">
 
 
 
-function searchProducts(){
+window.searchProducts = function (){
 
 
 const keyword =
@@ -196,7 +196,7 @@ displayProducts(filtered);
 
 
 
-function filterCategory(){
+window.filterCategory = function (){
 
 
 const category =
@@ -233,7 +233,7 @@ displayProducts(filtered);
 
 
 
-function deleteProduct(id){
+window.deleteProduct = function (id){
 
 
 const product =
