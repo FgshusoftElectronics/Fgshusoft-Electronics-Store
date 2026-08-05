@@ -34,7 +34,41 @@ export async function navigate(module){
 
 
 
+        // =========================
+        // Load Module JavaScript
+        // =========================
+
+        const oldScript =
+        document.getElementById("module-script");
+
+
+        if(oldScript){
+
+            oldScript.remove();
+
+        }
+
+
+        const script =
+        document.createElement("script");
+
+
+        script.type = "module";
+
+        script.id = "module-script";
+
+        script.src =
+        `modules/${module}/${module}.js`;
+
+
+        document.body.appendChild(script);
+
+
+
+
+        // =========================
         // Update active menu
+        // =========================
 
         document
         .querySelectorAll("#sidebar a")
@@ -59,7 +93,10 @@ export async function navigate(module){
 
 
 
+
+        // =========================
         // Update breadcrumb
+        // =========================
 
         const breadcrumb =
         document.getElementById(
@@ -72,16 +109,24 @@ export async function navigate(module){
             breadcrumb.innerHTML = `
 
             <i class="fa-solid fa-house"></i>
+
             /
+
             ${module.charAt(0).toUpperCase()+module.slice(1)}
 
             `;
+
         }
+
+
     }
+
 
     catch(error){
 
+
         console.error(error);
+
 
         document
         .getElementById("content")
@@ -96,7 +141,11 @@ export async function navigate(module){
         </div>
 
         `;
+
+
     }
 
+
     hideLoader();
+
 }
