@@ -23,10 +23,6 @@ description: "Wireless communication module"
 }
 
 ];
-}
-catch(e){
-  alert( e.message );
-}
 
 
 const container = document.getElementById("products");
@@ -50,3 +46,8 @@ container.innerHTML += `
 
 
 console.log("Products loaded successfully");
+
+}
+catch(e){
+  alert( e.message );
+            }
