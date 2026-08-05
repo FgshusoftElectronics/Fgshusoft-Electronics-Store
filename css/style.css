@@ -820,11 +820,37 @@ transition:.3s;
 
 }
 
-
-
 .telegram-float:hover{
 
 transform:scale(1.1);
 
 }
+
+
+#topBtn{
+
+position:fixed;
+
+bottom:100px;
+
+right:25px;
+
+width:45px;
+
+height:45px;
+
+border:none;
+
+border-radius:50%;
+
+background:#0d6efd;
+
+color:white;
+
+display:none;
+
+z-index:999;
+
+}
+
 
