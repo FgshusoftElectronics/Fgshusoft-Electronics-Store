@@ -2,7 +2,6 @@
 // Product Database (temporary)
 // Later replaced by Firebase Firestore
 
-
 const products = [
 
     {
