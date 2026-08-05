@@ -54,28 +54,64 @@ await fetch(url);
         }
 
 
+// =========================
+// Load Module JavaScript if available
+// =========================
+
+const scriptUrl =
+`modules/${module}/${module}.js`;
+
+
+try {
+
+
+    const jsCheck =
+    await fetch(scriptUrl);
+
+
+    if(jsCheck.ok){
+
+
+        const oldScript =
+        document.getElementById(
+            "module-script"
+        );
+
+
+        if(oldScript){
+
+            oldScript.remove();
+
+        }
+
+
         const script =
         document.createElement("script");
 
 
-        script.type = "module";
+        script.type="module";
 
-        script.id = "module-script";
+        script.id="module-script";
 
-        script.src =
-        `modules/${module}/${module}.js`;
-
-
-      document.body.appendChild(script);
+        script.src=scriptUrl;
 
 
-script.onload = ()=>{
+        document.body.appendChild(script);
+
+
+    }
+
+
+}
+
+catch(error){
 
     console.log(
-        module + " loaded"
+        "No JS module for",
+        module
     );
 
-};
+}
 
 
 script.onerror = ()=>{
