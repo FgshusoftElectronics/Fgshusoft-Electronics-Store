@@ -57,94 +57,185 @@ function loadCategories(){
 
 
 // Display products
-
-function displayProducts(productList = products){
-
+function displayProducts(productList = products) {
 
     productContainer.innerHTML = "";
 
+    if (productList.length === 0) {
 
+        productContainer.innerHTML = `
+
+        <div class="col-12">
+
+            <div class="alert alert-warning text-center shadow-sm">
+
+                <i class="fa-solid fa-box-open fa-3x mb-3"></i>
+
+                <h4>No Products Found</h4>
+
+                <p>Try another keyword or category.</p>
+
+            </div>
+
+        </div>
+
+        `;
+
+        return;
+    }
 
     productList.forEach(product => {
 
-
         productContainer.innerHTML += `
 
+<div class="col">
 
-<div class="card shadow-sm h-100 product-card">
+<div class="card h-100 border-0 shadow product-card">
 
+    <div class="position-relative">
 
-<img src="${product.image}"
+        <img src="${product.image}"
+             class="card-img-top"
+             alt="${product.name}"
+             style="height:220px;object-fit:cover;">
 
-class="card-img-top"
+        <span class="badge bg-primary position-absolute top-0 start-0 m-2">
 
-alt="${product.name}">
+            <i class="fa-solid ${product.icon}"></i>
 
+            ${product.category}
 
+        </span>
 
-<div class="card-body">
+        <span class="badge bg-success position-absolute top-0 end-0 m-2">
 
+            In Stock
 
-<h5 class="card-title">
+        </span>
 
-<i class="fa-solid ${product.icon} text-primary"></i>
-
-${product.name}
-
-</h5>
-
-
-
-<p class="text-muted">
-
-${product.category}
-
-</p>
+    </div>
 
 
 
-<p>
+    <div class="card-body d-flex flex-column">
 
-${product.description}
+        <h5 class="fw-bold">
 
-</p>
+            ${product.name}
 
-
-
-<h4 class="text-success">
-
-${product.price} ${product.currency}
-
-</h4>
+        </h5>
 
 
+        <div class="mb-2 text-warning">
 
-<button class="btn btn-primary w-100"
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
 
-onclick="addToCart(${product.id})">
+            <small class="text-muted ms-2">
+
+                (4.8)
+
+            </small>
+
+        </div>
 
 
-<i class="fa-solid fa-cart-plus"></i>
 
-Add to Cart
+        <p class="text-muted flex-grow-1">
+
+            ${product.description}
+
+        </p>
 
 
-</button>
+
+        <div class="mb-3">
+
+            <h3 class="text-success fw-bold mb-0">
+
+                ${Number(product.price).toLocaleString()} ${product.currency}
+
+            </h3>
+
+        </div>
 
 
+
+        <div class="d-grid gap-2">
+
+            <button class="btn btn-primary"
+
+                onclick="addToCart(${product.id})">
+
+                <i class="fa-solid fa-cart-plus"></i>
+
+                Add to Cart
+
+            </button>
+
+
+
+            <button class="btn btn-outline-success"
+
+                onclick="viewProduct(${product.id})">
+
+                <i class="fa-solid fa-eye"></i>
+
+                Quick View
+
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 
-
 </div>
-
 
 `;
 
-
-
     });
 
+}
+
+
+function viewProduct(id){
+
+    const product = products.find(p => p.id === id);
+
+    Swal.fire({
+
+        title: product.name,
+
+        imageUrl: product.image,
+
+        imageHeight: 220,
+
+        html: `
+            <p><strong>Category:</strong> ${product.category}</p>
+            <p>${product.description}</p>
+            <h3 class="text-success">${Number(product.price).toLocaleString()} ${product.currency}</h3>
+        `,
+
+        confirmButtonText: "Add to Cart",
+
+        showCancelButton: true,
+
+        cancelButtonText: "Close"
+
+    }).then(result => {
+
+        if(result.isConfirmed){
+
+            addToCart(id);
+
+        }
+
+    });
 
 }
 
