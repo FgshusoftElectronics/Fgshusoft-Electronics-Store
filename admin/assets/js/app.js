@@ -14,7 +14,7 @@ window.addEventListener(
 "DOMContentLoaded",
 async ()=>{
 try{
-await checkAuth();
+//await checkAuth();
 
 await loadSidebar();
 
