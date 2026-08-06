@@ -1,26 +1,24 @@
-
-import { checkAuth } from "./firebase-auth.js";
-
-window.addEventListener(
-"DOMContentLoaded",
-async ()=>{
 try{
- 
-await checkAuth();
 
-loadSidebar();
+    await checkAuth();
 
-loadTopbar();
+    loadSidebar();
 
-loadFooter();
+    loadTopbar();
 
-navigate("dashboard");
+    loadFooter();
+
+    navigate("dashboard");
 
 }
 
 catch(e){
-alert( "Error: " + e );
-window.location.href =
-"login.html";
+
+    alert(
+        "Error: " + e.message
+    );
+
+    window.location.href =
+    "login.html";
+
 }
-});
