@@ -23,7 +23,7 @@ await loadTopbar();
 alert( "Step 3" )
 await loadFooter();
 alert( "Step 4" )
-navigate("dashboard");
+await navigate("dashboard");
 }
 catch(e){
 alert(e.message);
