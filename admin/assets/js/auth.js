@@ -1,15 +1,7 @@
-alert("Auth JS loaded");
-
-alert(
-"SweetAlert:"+
-typeof Swal
-);
 
 import { 
     loginAdmin 
 } from "./firebase-auth.js";
-
-
 
 const form =
 document.getElementById(
