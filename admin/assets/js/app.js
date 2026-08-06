@@ -6,6 +6,7 @@ import "./profile.js";
 window.addEventListener(
 "DOMContentLoaded",
 async ()=>{
+  
 try{
 await checkAuth();
 await loadSidebar();
