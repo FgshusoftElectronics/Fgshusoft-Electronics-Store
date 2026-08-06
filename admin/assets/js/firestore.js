@@ -1,6 +1,12 @@
-import { getFirestore } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { getAuth }
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+import { getFirestore }
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyD2U07u1C-gxdg2wk0Q9LUDgv958u8fN8Y",
   authDomain: "max-electronics-69ba2.firebaseapp.com",
@@ -11,4 +17,5 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
 export const db = getFirestore(app);
