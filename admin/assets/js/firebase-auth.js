@@ -1,41 +1,80 @@
-import { auth } 
-from "./firebase.js";
+import { auth } from "./firebase.js";
 
 import {
-signInWithEmailAndPassword,
-signOut,
-onAuthStateChanged
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
 }
 from 
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
-// LOGIN
-export async function loginAdmin(
-email,
-password
-){
 
-return await signInWithEmailAndPassword(
-    auth,
+
+// =============================
+// LOGIN ADMIN
+// =============================
+
+export async function loginAdmin(
     email,
     password
-);
+){
+
+    return await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+    );
+
 }
 
-// LOGOUT
+
+
+
+// =============================
+// LOGOUT ADMIN
+// =============================
+
 export async function logoutAdmin(){
+
     await signOut(auth);
+
 }
 
-// CHECK LOGIN STATUS
+
+
+
+// =============================
+// CHECK AUTH STATUS
+// =============================
+
 export function checkAuth(){
-onAuthStateChanged(
-auth,
-user=>{
-if(!user){
-location.href="login.html";
-}
-});
 
+    return new Promise(
+    (resolve, reject)=>{
+
+
+        onAuthStateChanged(
+        auth,
+        (user)=>{
+
+
+            if(user){
+
+                resolve(user);
+
+            }
+            else{
+
+                reject(
+                    "User not authenticated"
+                );
+
+            }
+
+
+        });
+
+
+    });
 
 }
