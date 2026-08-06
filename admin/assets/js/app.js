@@ -1,9 +1,3 @@
-alert("Auth JS loaded");
-
-alert(
-"SweetAlert:"+
-typeof Swal
-);
 
 import { checkAuth } from "./firebase-auth.js";
 
@@ -11,6 +5,8 @@ window.addEventListener(
 "DOMContentLoaded",
 async ()=>{
 try{
+  alert( new Date() );
+  
 await checkAuth();
 
 loadSidebar();
