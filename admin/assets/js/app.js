@@ -5,8 +5,7 @@ window.addEventListener(
 "DOMContentLoaded",
 async ()=>{
 try{
-  alert( new Date() );
-  
+ 
 await checkAuth();
 
 loadSidebar();
