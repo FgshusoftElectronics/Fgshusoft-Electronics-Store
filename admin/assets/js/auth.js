@@ -1,5 +1,3 @@
-alert( new Date() );
-
 import { 
     loginAdmin 
 } from "./firebase-auth.js";
