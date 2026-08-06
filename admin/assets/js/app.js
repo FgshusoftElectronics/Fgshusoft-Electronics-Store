@@ -10,18 +10,11 @@ import {
     navigate
 } from "./router.js";
 
-
-
 window.addEventListener(
 "DOMContentLoaded",
 async ()=>{
-
-
 try{
-
-
 await checkAuth();
-
 
 await loadSidebar();
 
@@ -29,29 +22,12 @@ await loadTopbar();
 
 await loadFooter();
 
-
 navigate("dashboard");
-
-
 }
-
-
 catch(e){
-
-
-console.error(e);
-
-
-alert(
-"Error: " + e.message
-);
-
+alert(e.message);
 
 window.location.href =
 "login.html";
-
-
 }
-
-
 });
