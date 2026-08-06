@@ -1,14 +1,21 @@
 import { 
-    loginAdmin 
+    loginAdmin,
+    checkAdminAuth
 } from "./firebase-auth.js";
 
 
 
-const form =
-document.getElementById(
+
+// =============================
+// LOGIN PAGE
+// =============================
+
+const form = document.getElementById(
     "loginForm"
 );
 
+
+if(form){
 
 
 form.addEventListener(
@@ -23,7 +30,7 @@ e.preventDefault();
 const email =
 document.getElementById(
 "email"
-).value;
+).value.trim();
 
 
 
@@ -53,7 +60,7 @@ title:"Welcome",
 
 text:"Login successful",
 
-timer:1500,
+timer:1200,
 
 showConfirmButton:false
 
@@ -63,13 +70,15 @@ showConfirmButton:false
 
 setTimeout(()=>{
 
-location.href="index.html";
+window.location.href =
+"index.html";
 
-},1500);
+},1200);
 
 
 
 }
+
 
 catch(error){
 
@@ -90,3 +99,37 @@ text:error.message
 
 
 });
+
+
+}
+
+
+
+
+// =============================
+// ADMIN PAGE PROTECTION
+// =============================
+
+
+const isAdminPage =
+window.location.pathname.includes(
+"/admin/index.html"
+);
+
+
+
+if(isAdminPage){
+
+
+checkAdminAuth()
+.catch(()=>{
+
+
+window.location.href =
+"login.html";
+
+
+});
+
+
+}
