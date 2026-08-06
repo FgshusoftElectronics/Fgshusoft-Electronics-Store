@@ -15,6 +15,20 @@ const firebaseConfig = {
   appId: "1:974351944204:web:19131c9178499e51987c29"
 };
 
-const app = initializeApp(firebaseConfig);
+import { initializeApp } 
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
+
+import { 
+getAuth,
+setPersistence,
+browserLocalPersistence
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+
+const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+setPersistence( auth, browserLocalPersistence );
+
