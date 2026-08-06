@@ -18,8 +18,8 @@ navigate("dashboard");
 
 }
 
-catch(error){
-alert( "Error: " + error.message);
+catch(e){
+alert( "Error: " + e.message);
 window.location.href =
 "login.html";
 }
