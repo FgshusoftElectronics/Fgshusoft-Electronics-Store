@@ -19,7 +19,7 @@ navigate("dashboard");
 }
 
 catch(error){
-alert(error.message);
+alert( "Error: " + error.message);
 window.location.href =
 "login.html";
 }
