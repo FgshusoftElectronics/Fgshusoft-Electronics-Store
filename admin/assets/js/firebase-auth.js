@@ -46,16 +46,19 @@ export async function logoutAdmin(){
 // =============================
 // CHECK AUTH STATUS
 // =============================
-
 export function checkAuth(){
 
     return new Promise(
     (resolve, reject)=>{
 
 
+        const unsubscribe =
         onAuthStateChanged(
         auth,
         (user)=>{
+
+
+            unsubscribe();
 
 
             if(user){
@@ -66,11 +69,18 @@ export function checkAuth(){
             else{
 
                 reject(
-                    "User not authenticated"
+                    new Error(
+                        "No authenticated user found"
+                    )
                 );
 
             }
 
+
+        },
+        (error)=>{
+
+            reject(error);
 
         });
 
