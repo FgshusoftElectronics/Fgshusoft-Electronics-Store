@@ -1,3 +1,4 @@
+alert( new Date() );
 
 import { 
     loginAdmin 
