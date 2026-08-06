@@ -12,7 +12,7 @@ from
 import {db} from "./firebase.js";
  
 const productsRef = collection( db, "products" );
-
+ 
 // GET PRODUCTS
 export async function getProducts(){
 const snapshot = await getDocs( productsRef );
