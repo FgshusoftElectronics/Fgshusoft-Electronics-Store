@@ -10,7 +10,7 @@ export async function loadSidebar() {
             navigate(link.dataset.page);
         });
     });
-}
+} 
 
 export async function loadTopbar(){
 const response = await fetch( "templates/topbar.html" );
