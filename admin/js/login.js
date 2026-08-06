@@ -1,4 +1,3 @@
-alert( new Date() );
 
 document
 .getElementById("loginForm")
