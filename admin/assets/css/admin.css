@@ -3,9 +3,7 @@ background:#f8fafc;
 }
 
 .navbar{
-
 border-bottom:1px solid #eee;
-
 }
 
 #sidebar{
@@ -17,21 +15,13 @@ box-shadow:
 
 }
 
-
-
 #content{
-
 background:white;
-
 border-radius:20px;
-
 padding:25px;
-
 min-height:75vh;
-
 box-shadow:
 0 8px 25px rgba(0,0,0,.05);
-
 }
 
 
