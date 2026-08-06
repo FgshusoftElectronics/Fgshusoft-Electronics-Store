@@ -18,7 +18,7 @@ export async function getProducts(){
 const snapshot = await getDocs( productsRef );
 return snapshot.docs.map( doc=>({ id:doc.id, ...doc.data()}) );
 }
-
+ 
 // ADD PRODUCT
 
 export async function addProduct( product ){
