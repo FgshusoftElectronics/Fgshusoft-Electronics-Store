@@ -1,18 +1,14 @@
 import { 
-    loginAdmin,
-    checkAdminAuth
+    loginAdmin 
 } from "./firebase-auth.js";
 
 
 
-
-// =============================
-// LOGIN PAGE
-// =============================
-
-const form = document.getElementById(
+const form =
+document.getElementById(
     "loginForm"
 );
+
 
 
 if(form){
@@ -28,17 +24,65 @@ e.preventDefault();
 
 
 const email =
-document.getElementById(
-"email"
-).value.trim();
+document
+.getElementById("email")
+.value
+.trim();
 
 
 
 const password =
-document.getElementById(
-"password"
-).value;
+document
+.getElementById("password")
+.value;
 
+
+
+const button =
+form.querySelector(
+"button"
+);
+
+
+
+
+if(!email || !password){
+
+
+Swal.fire({
+
+icon:"warning",
+
+title:"Missing Information",
+
+text:"Please enter email and password"
+
+});
+
+
+return;
+
+}
+
+
+
+
+// Button loading
+
+const oldText =
+button.innerHTML;
+
+
+button.disabled = true;
+
+
+button.innerHTML = `
+
+<span class="spinner-border spinner-border-sm"></span>
+
+ Logging in...
+
+`;
 
 
 
@@ -70,8 +114,10 @@ showConfirmButton:false
 
 setTimeout(()=>{
 
+
 window.location.href =
 "index.html";
+
 
 },1200);
 
@@ -80,7 +126,78 @@ window.location.href =
 }
 
 
+
 catch(error){
+
+
+
+console.error(
+"Login error:",
+error
+);
+
+
+
+let message =
+"Unable to login";
+
+
+
+switch(error.code){
+
+
+case "auth/invalid-email":
+
+message =
+"Invalid email format";
+
+break;
+
+
+
+case "auth/user-not-found":
+
+message =
+"No account found with this email";
+
+break;
+
+
+
+case "auth/wrong-password":
+
+message =
+"Incorrect password";
+
+break;
+
+
+
+case "auth/invalid-credential":
+
+message =
+"Invalid email or password";
+
+break;
+
+
+
+case "auth/too-many-requests":
+
+message =
+"Too many attempts. Try again later";
+
+break;
+
+
+
+default:
+
+message =
+error.message;
+
+}
+
 
 
 Swal.fire({
@@ -89,44 +206,31 @@ icon:"error",
 
 title:"Login Failed",
 
-text:error.message
+text:message,
+
+confirmButtonColor:"#0d6efd"
 
 });
+
+
 
 
 }
 
 
 
-});
+finally{
+
+
+button.disabled = false;
+
+
+button.innerHTML =
+oldText;
 
 
 }
 
-
-
-
-// =============================
-// ADMIN PAGE PROTECTION
-// =============================
-
-
-const isAdminPage =
-window.location.pathname.includes(
-"/admin/index.html"
-);
-
-
-
-if(isAdminPage){
-
-
-checkAdminAuth()
-.catch(()=>{
-
-
-window.location.href =
-"login.html";
 
 
 });
