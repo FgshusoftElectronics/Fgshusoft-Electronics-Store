@@ -1,4 +1,4 @@
-import { checkAuth } from "./firebase-auth.js";
+//import { checkAuth } from "./firebase-auth.js";
 
 import {
     loadSidebar,
@@ -13,6 +13,7 @@ import {
 window.addEventListener(
 "DOMContentLoaded",
 async ()=>{
+    alert( "Step 0" )
 try{
 //await checkAuth();
 alert( "Step 1" )
