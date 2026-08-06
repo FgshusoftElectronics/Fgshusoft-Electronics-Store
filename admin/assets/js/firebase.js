@@ -2,7 +2,9 @@ import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import { 
-getAuth 
+getAuth,
+setPersistence,
+browserLocalPersistence 
 }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
@@ -14,19 +16,6 @@ const firebaseConfig = {
   messagingSenderId: "974351944204",
   appId: "1:974351944204:web:19131c9178499e51987c29"
 };
-
-import { initializeApp } 
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
-
-import { 
-getAuth,
-setPersistence,
-browserLocalPersistence
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
-
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
