@@ -10,7 +10,7 @@ from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
  
 import {db} from "./firebase.js";
-
+ 
 const productsRef = collection( db, "products" );
 
 // GET PRODUCTS
