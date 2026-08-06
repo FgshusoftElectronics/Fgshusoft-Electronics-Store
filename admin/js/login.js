@@ -1,7 +1,8 @@
+alert( new Date() );
+
 document
 .getElementById("loginForm")
 .addEventListener("submit",(e)=>{
-
 e.preventDefault();
 
 const email =
