@@ -1,6 +1,6 @@
 import { logoutAdmin } from "./firebase-auth.js";
 import { navigate } from "./router.js";
- 
+  
 export async function loadSidebar() {
     const response = await fetch( "templates/sidebar.html" );
     document.getElementById("sidebar").innerHTML = await response.text();
