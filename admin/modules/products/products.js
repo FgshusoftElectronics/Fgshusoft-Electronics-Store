@@ -1,296 +1,56 @@
-    
-const products = [
-
-{
-    id:1,
-    name:"ESP32 Development Board",
-    category:"IoT",
-    price:5000,
-    stock:25,
-    image:"../../images/esp32.jpg"
-},
-
-
-{
-    id:2,
-    name:"Arduino UNO R3",
-    category:"Microcontrollers",
-    price:7000,
-    stock:15,
-    image:"../../images/arduino.jpg"
-},
-
-
-{
-    id:3,
-    name:"DHT11 Temperature Sensor",
-    category:"Sensors",
-    price:1500,
-    stock:40,
-    image:"../../images/dht11.jpg"
-},
-
-
-{
-    id:4,
-    name:"5V 40A Power Supply",
-    category:"Power",
-    price:25000,
-    stock:8,
-    image:"../../images/power.jpg"
+import {
+getProducts,
+removeProduct
 }
+from
+"../../assets/js/product-service.js";
 
+const table = document.getElementById(
+"productsTable"
+);
 
-];
+async function loadProducts(){
+const products = await getProducts();
 
-const table =
-document.getElementById("productsTable");
-
-function displayProducts(list = products){
-    table.innerHTML="";
-    list.forEach(product=>{
-        table.innerHTML += `
+table.innerHTML="";
+products.forEach(product=>{
+table.innerHTML += `
 <tr>
 <td>
-<img src="${product.image}"
-width="50"
-height="50"
-class="rounded shadow-sm"
-onerror="this.src='../../images/no-image.png'">
-</td>
-
-
-
-<td>
-
-<strong>
-
 ${product.name}
-
-</strong>
-
 </td>
-
-
-
 <td>
-
-<span class="badge bg-primary">
-
 ${product.category}
-
-</span>
-
 </td>
-
-
-
 <td>
-
-${product.price.toLocaleString()} FCFA
-
+${product.price} FCFA
 </td>
-
-
-
 <td>
-
 ${product.stock}
-
 </td>
-
-
-
 <td>
-
-
-${
-product.stock > 0
-
-?
-
-`<span class="badge bg-success">
-
-Available
-
-</span>`
-
-:
-
-`<span class="badge bg-danger">
-
-Out of Stock
-
-</span>`
-
-}
-
-
-</td>
-
-
-
-<td>
-
-
-<button class="btn btn-sm btn-warning">
-
-<i class="fa-solid fa-pen"></i>
-
+<button
+class="btn btn-danger btn-sm"
+data-id="${product.id}">
+<i class="fa fa-trash"></i>
 </button>
-
-
-<button 
-class="btn btn-sm btn-danger"
-onclick="deleteProduct(${product.id})">
-
-
-<i class="fa-solid fa-trash"></i>
-
-</button>
-
-
 </td>
-
-
 </tr>
-
-
 `;
-
-
-
-    });
-
-
-}
-
-
-
-window.searchProducts = function (){
-
-
-const keyword =
-document.getElementById(
-"searchProduct"
-).value.toLowerCase();
-
-
-
-const filtered =
-products.filter(product=>
-
-product.name
-.toLowerCase()
-.includes(keyword)
-
-);
-
-
-
-displayProducts(filtered);
-
-
-}
-
-
-
-
-window.filterCategory = function (){
-
-
-const category =
-document.getElementById(
-"categoryFilter"
-).value;
-
-
-
-if(category==="all"){
-
-displayProducts();
-
-return;
-
-}
-
-
-
-const filtered =
-products.filter(product=>
-
-product.category === category
-
-);
-
-
-
-displayProducts(filtered);
-
-
-}
-
-
-
-
-window.deleteProduct = function (id){
-
-
-const product =
-products.find(
-p=>p.id===id
-);
-
-
-
-Swal.fire({
-
-title:"Delete product?",
-
-text:product.name,
-
-icon:"warning",
-
-showCancelButton:true,
-
-confirmButtonText:"Yes, delete"
-
-}).then(result=>{
-
-
-if(result.isConfirmed){
-
-
-Swal.fire(
-
-"Deleted!",
-
-"Product removed",
-
-"success"
-
-);
-
-
-}
 });
 }
 
-// Events
+table.addEventListener(
+"click",
+async e=>{
+if(
+e.target.closest("button")
+){
 
-document
-.getElementById("searchProduct")
-.addEventListener(
-"input",
-searchProducts
-);
+const id = e.target.closest("button").dataset.id;
+await removeProduct(id);
+loadProducts();
+}
+});
 
-document
-.getElementById("categoryFilter")
-.addEventListener(
-"change",
-filterCategory
-);
-
-// Initial load
-displayProducts();
+loadProducts();
