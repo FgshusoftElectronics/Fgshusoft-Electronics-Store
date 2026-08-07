@@ -1,26 +1,28 @@
-import { initializeApp } 
+
+import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
- 
-import { 
-getAuth,
-setPersistence,
-browserLocalPersistence 
-}
+
+import { getAuth }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
- 
+
 import { getFirestore }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD2U07u1C-gxdg2wk0Q9LUDgv958u8fN8Y",
-  authDomain: "max-electronics-69ba2.firebaseapp.com",
-  projectId: "max-electronics-69ba2",
-  storageBucket: "max-electronics-69ba2.firebasestorage.app",
-  messagingSenderId: "974351944204",
-  appId: "1:974351944204:web:19131c9178499e51987c29"
+  apiKey: "AIzaSyDImp7cB7bM7WBrxjdP3gNVhdyDVg3mRzs",
+  authDomain: "gths-kumba-sofati.firebaseapp.com",
+  projectId: "gths-kumba-sofati",
+  storageBucket: "gths-kumba-sofati.firebasestorage.app",
+  messagingSenderId: "26166743494",
+  appId: "1:26166743494:web:0309b7d043512cb7f1a2c7"
 };
 
+
 const app = initializeApp(firebaseConfig);
+
 export const auth = getAuth(app);
-setPersistence( auth, browserLocalPersistence );
+
 export const db = getFirestore(app);
+
+export default app;
