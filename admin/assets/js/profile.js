@@ -6,3 +6,4 @@ if(email && user){
 email.innerHTML = user.email;
 }
 });
+
