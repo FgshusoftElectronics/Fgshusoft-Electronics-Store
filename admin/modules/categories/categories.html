@@ -1,16 +1,199 @@
 <div class="container-fluid">
 
-<h2>
-<i class="fa-solid fa-tags text-primary"></i>
+    <div class="d-flex justify-content-between align-items-center mb-4">
 
-Categories
+        <div>
+            <h3 class="fw-bold">
+                <i class="fa-solid fa-tags text-primary"></i>
+                Categories
+            </h3>
 
-</h2>
+            <p class="text-muted mb-0">
+                Manage product categories
+            </p>
+        </div>
 
-<p class="text-muted">
 
-Category management module coming soon...
+        <button 
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#categoryModal">
 
-</p>
+            <i class="fa-solid fa-plus"></i>
+            Add Category
+
+        </button>
+
+    </div>
+
+
+
+    <!-- Search -->
+
+    <div class="card shadow-sm border-0 mb-4">
+
+        <div class="card-body">
+
+            <input 
+            type="search"
+            id="searchCategory"
+            class="form-control"
+            placeholder="Search categories...">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Table -->
+
+    <div class="card shadow-sm border-0">
+
+        <div class="card-body">
+
+
+            <div class="table-responsive">
+
+                <table class="table align-middle">
+
+                    <thead class="table-light">
+
+                        <tr>
+
+                            <th>
+                                Icon
+                            </th>
+
+                            <th>
+                                Name
+                            </th>
+
+                            <th>
+                                Description
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="categoryTable">
+
+                    </tbody>
+
+
+                </table>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<!-- ADD CATEGORY MODAL -->
+
+<div class="modal fade" id="categoryModal">
+
+<div class="modal-dialog">
+
+<div class="modal-content">
+
+
+<div class="modal-header">
+
+<h5 class="modal-title">
+
+<i class="fa-solid fa-tags"></i>
+
+New Category
+
+</h5>
+
+
+<button 
+class="btn-close"
+data-bs-dismiss="modal">
+</button>
+
+</div>
+
+
+
+<div class="modal-body">
+
+
+<input 
+id="categoryName"
+class="form-control mb-3"
+placeholder="Category name">
+
+
+
+<input 
+id="categoryIcon"
+class="form-control mb-3"
+placeholder="FontAwesome icon e.g fa-microchip">
+
+
+
+<textarea
+id="categoryDescription"
+class="form-control"
+placeholder="Description">
+</textarea>
+
+
+
+</div>
+
+
+
+
+<div class="modal-footer">
+
+
+<button 
+class="btn btn-secondary"
+data-bs-dismiss="modal">
+
+Cancel
+
+</button>
+
+
+
+<button
+id="saveCategory"
+class="btn btn-primary">
+
+Save Category
+
+</button>
+
+
+</div>
+
+
+
+</div>
+
+</div>
 
 </div>
