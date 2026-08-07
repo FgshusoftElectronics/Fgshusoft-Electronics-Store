@@ -1,0 +1,317 @@
+<div class="container-fluid">
+
+    <!-- HEADER -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h2 class="fw-bold mb-1">
+
+                <i class="fa-solid fa-tags text-primary"></i>
+
+                Brands
+
+            </h2>
+
+            <p class="text-muted mb-0">
+
+                Manage product brands
+
+            </p>
+
+        </div>
+
+        <button
+        id="addBrandBtn"
+        class="btn btn-primary">
+
+            <i class="fa-solid fa-plus"></i>
+
+            Add Brand
+
+        </button>
+
+    </div>
+
+
+    <!-- SEARCH -->
+    <div class="card border-0 shadow-sm rounded-4 mb-4">
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+
+                            <i class="fa-solid fa-search"></i>
+
+                        </span>
+
+                        <input
+                        id="searchBrand"
+                        class="form-control"
+                        placeholder="Search brands...">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- TABLE -->
+    <div class="card border-0 shadow-sm rounded-4">
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle mb-0">
+
+                    <thead class="table-light">
+
+                        <tr>
+
+                            <th>Logo</th>
+
+                            <th>Brand</th>
+
+                            <th>Country</th>
+
+                            <th>Website</th>
+
+                            <th>Status</th>
+
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="brandsTable">
+
+                        <tr>
+
+                            <td
+                            colspan="6"
+                            class="text-center text-muted py-4">
+
+                                Loading brands...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================= -->
+<!-- BRAND MODAL -->
+<!-- ================================= -->
+
+<div
+class="modal fade"
+id="brandModal"
+tabindex="-1">
+
+<div class="modal-dialog modal-lg">
+
+<div class="modal-content rounded-4">
+
+<div class="modal-header">
+
+<h5 class="modal-title fw-bold">
+
+<i class="fa-solid fa-tags text-primary"></i>
+
+Add Brand
+
+</h5>
+
+<button
+class="btn-close"
+data-bs-dismiss="modal">
+</button>
+
+</div>
+
+
+
+<div class="modal-body">
+
+<div class="row g-3">
+
+<div class="col-md-6">
+
+<label class="form-label">
+
+Brand Name
+
+</label>
+
+<input
+id="brandName"
+class="form-control"
+placeholder="Espressif">
+
+</div>
+
+
+
+<div class="col-md-6">
+
+<label class="form-label">
+
+Country
+
+</label>
+
+<input
+id="brandCountry"
+class="form-control"
+placeholder="China">
+
+</div>
+
+
+
+<div class="col-md-6">
+
+<label class="form-label">
+
+Website
+
+</label>
+
+<input
+id="brandWebsite"
+type="url"
+class="form-control"
+placeholder="https://www.example.com">
+
+</div>
+
+
+
+<div class="col-md-6">
+
+<label class="form-label">
+
+Status
+
+</label>
+
+<select
+id="brandStatus"
+class="form-select">
+
+<option value="active">
+
+Active
+
+</option>
+
+<option value="inactive">
+
+Inactive
+
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="col-12">
+
+<label class="form-label">
+
+Logo
+
+</label>
+
+<input
+type="file"
+id="brandLogo"
+class="form-control"
+accept="image/*">
+
+<img
+id="brandLogoPreview"
+class="img-thumbnail mt-3"
+style="display:none;max-height:120px;">
+
+</div>
+
+
+
+<div class="col-12">
+
+<label class="form-label">
+
+Description
+
+</label>
+
+<textarea
+id="brandDescription"
+class="form-control"
+rows="4"
+placeholder="Brand description..."></textarea>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="modal-footer">
+
+<button
+class="btn btn-secondary"
+data-bs-dismiss="modal">
+
+Cancel
+
+</button>
+
+<button
+id="saveBrand"
+class="btn btn-primary">
+
+<i class="fa-solid fa-save"></i>
+
+Save Brand
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
