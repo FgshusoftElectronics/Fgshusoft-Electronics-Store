@@ -11,7 +11,7 @@ export async function loadSidebar() {
         });
     });
 } 
-  
+   
 export async function loadTopbar(){
 const response = await fetch( "templates/topbar.html" );
 document.getElementById("topbar").innerHTML = await response.text();
