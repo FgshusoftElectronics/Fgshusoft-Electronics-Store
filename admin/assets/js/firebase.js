@@ -5,7 +5,9 @@ from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import { getAuth }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
-import { getFirestore }
+import { getFirestore,
+    serverTimestamp
+}
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -25,4 +27,11 @@ export const auth = getAuth(app);
 
 export const db = getFirestore(app);
 
+export { getAuth };
+export { firebaseConfig };
+
+export { serverTimestamp };
+
 export default app;
+
+
