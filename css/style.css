@@ -980,3 +980,905 @@ margin-bottom:15px;
 .why-card p{
 opacity:.9;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   ACCOUNT INFORMATION CARDS
+============================================================ */
+
+.account-info-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    min-height: 78px;
+
+    padding: 15px;
+
+    background: #fff;
+
+    border: 1px solid #edf0f4;
+
+    border-radius: 16px;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
+
+}
+
+
+.account-info-card:hover {
+
+    transform: translateY(-2px);
+
+    border-color: #dce3eb;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.06);
+
+}
+
+
+.account-info-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    min-width: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #f1f5f9;
+
+    color: #2563eb;
+
+}
+
+
+#accountAvatar {
+
+    text-transform: uppercase;
+
+    font-weight: 700;
+
+}
+
+
+#accountUID {
+
+    max-width: 180px;
+
+}
+
+
+@media (max-width: 576px) {
+
+    .account-info-card {
+
+        padding: 12px;
+
+    }
+
+
+    #accountUID {
+
+        max-width: 130px;
+
+    }
+
+}
+
+
+
+
+/* =====================================================
+   APPLICATION LOADER
+===================================================== */
+
+.app-loader {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(248, 250, 252, .96);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    transition:
+        opacity .4s ease,
+        visibility .4s ease;
+
+}
+
+
+/* =====================================================
+   LOADER CARD
+===================================================== */
+
+.loader-card {
+
+    width: min(420px, 100%);
+
+    padding: 38px 34px 30px;
+
+    text-align: center;
+
+    background: #fff;
+
+    border: 1px solid
+        rgba(15, 23, 42, .07);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 25px 70px
+        rgba(15, 23, 42, .14);
+
+    animation:
+        loaderCardIn .45s ease both;
+
+}
+
+
+/* =====================================================
+   DOUBLE SPINNER AREA
+===================================================== */
+
+.loader-icon-wrap {
+
+    position: relative;
+
+    width: 100px;
+
+    height: 100px;
+
+    margin: 0 auto 24px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+/* =====================================================
+   SPINNER RINGS
+===================================================== */
+
+.loader-ring {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+}
+
+
+/* OUTER RING */
+
+.loader-ring-outer {
+
+    width: 100px;
+
+    height: 100px;
+
+    border: 3px solid
+        rgba(13, 110, 253, .12);
+
+    border-top-color:
+        #0d6efd;
+
+    border-right-color:
+        #0d6efd;
+
+    animation:
+        loaderOuterSpin 1.6s linear infinite;
+
+}
+
+
+/* INNER RING */
+
+.loader-ring-inner {
+
+    width: 78px;
+
+    height: 78px;
+
+    border: 3px solid
+        rgba(13, 110, 253, .10);
+
+    border-bottom-color:
+        #6ea8fe;
+
+    border-left-color:
+        #6ea8fe;
+
+    animation:
+        loaderInnerSpin 1s linear infinite reverse;
+
+}
+
+
+/* =====================================================
+   CENTER ICON
+===================================================== */
+
+.loader-icon {
+
+    position: relative;
+
+    z-index: 3;
+
+    width: 58px;
+
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #eef5ff,
+            #ffffff
+        );
+
+    color: #0d6efd;
+
+    box-shadow:
+        0 8px 25px
+        rgba(13, 110, 253, .12);
+
+}
+
+
+.loader-icon i {
+
+    font-size: 25px;
+
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.loader-title {
+
+    margin: 0;
+
+    color: #172033;
+
+    font-size: 1.15rem;
+
+    font-weight: 700;
+
+    letter-spacing: .2px;
+
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
+.loader-body {
+
+    margin: 7px 0 24px;
+
+    min-height: 22px;
+
+    color: #6c757d;
+
+    font-size: .9rem;
+
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.loader-progress-wrapper {
+
+    width: 100%;
+
+    text-align: left;
+
+}
+
+
+/* PROGRESS LABEL */
+
+.loader-progress-info {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    color: #8a94a6;
+
+    font-size: .75rem;
+
+}
+
+
+.loader-progress-info strong {
+
+    color: #0d6efd;
+
+    font-weight: 700;
+
+}
+
+
+/* PROGRESS TRACK */
+
+.loader-progress {
+
+    width: 100%;
+
+    height: 8px;
+
+    overflow: hidden;
+
+    border-radius: 50px;
+
+    background:
+        #e9eef5;
+
+}
+
+
+/* PROGRESS BAR */
+
+.loader-progress-bar {
+
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0d6efd,
+            #4f8dfd
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(13, 110, 253, .25);
+
+    transition:
+        width .35s ease;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.loader-footer {
+
+    margin-top: 18px;
+
+    color: #98a1b2;
+
+    font-size: .75rem;
+
+}
+
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes loaderOuterSpin {
+
+    from {
+
+        transform:
+            rotate(0deg);
+
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+
+@keyframes loaderInnerSpin {
+
+    from {
+
+        transform:
+            rotate(0deg);
+
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+
+@keyframes loaderCardIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px)
+            scale(.97);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =====================================================
+   LOADER HIDDEN
+===================================================== */
+
+.app-loader.loader-hidden {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+}
+
+ 
+ 
+ 
+ 
+ /* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.hidden {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.hidden.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   NAVBAR SCROLL
+========================================================= */
+
+.navbar {
+    transition:
+        background-color .3s ease,
+        box-shadow .3s ease,
+        padding .3s ease;
+}
+
+.navbar-scrolled {
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.15) !important;
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+#topBtn {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease,
+        visibility .3s ease;
+
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 1050;
+
+    border: 0;
+    border-radius: 50%;
+
+    width: 48px;
+    height: 48px;
+}
+
+#topBtn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   IMAGE LOADING
+========================================================= */
+
+.image-loading {
+    opacity: .35;
+    filter: blur(4px);
+    transition:
+        opacity .5s ease,
+        filter .5s ease;
+}
+
+.image-loaded {
+    opacity: 1;
+    filter: blur(0);
+}
+
+.image-error {
+    opacity: .6;
+}
+
+
+/* =========================================================
+   BUTTON CLICK
+========================================================= */
+
+.button-clicked {
+    transform: scale(.97);
+}
+
+
+/* =========================================================
+   HERO PARALLAX
+========================================================= */
+
+#home img {
+    transform:
+        translateY(
+            var(--hero-scroll, 0px)
+        );
+
+    transition:
+        transform .1s linear;
+}
+
+
+/* =========================================================
+   CARD HOVER
+========================================================= */
+
+.product-card,
+.featured-card,
+.course-card,
+.project-card {
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+    transform-style: preserve-3d;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+}
+
+
+
+
+
+/* =========================================================
+   CART SUMMARY FAB
+========================================================= */
+
+.cart-fab {
+
+    width: 75px;
+    height: 75px;
+
+    border: 0;
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
+}
+
+
+.cart-fab:hover {
+
+    transform:
+        translateY(-4px)
+        scale(1.05);
+
+    box-shadow:
+        0 15px 35px rgba(13, 110, 253, .35) !important;
+
+}
+
+
+.cart-fab:active {
+
+    transform:
+        scale(.94);
+
+}
+
+
+/* =========================================================
+   COUNT BADGE
+========================================================= */
+
+#cartFabCount {
+
+    min-width: 25px;
+    min-height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: .72rem;
+
+}
+
+
+/* =========================================================
+   TOTAL BADGE
+========================================================= */
+
+.cart-fab-total {
+
+    font-size: .8rem;
+
+    white-space: nowrap;
+
+    transition:
+        transform .25s ease,
+        opacity .25s ease;
+
+}
+
+
+/* =========================================================
+   CART CHANGE ANIMATION
+========================================================= */
+
+.cart-fab-pop {
+
+    animation:
+        cartFabPop .45s ease;
+
+}
+
+
+.cart-fab-total-pop {
+
+    animation:
+        cartTotalPop .45s ease;
+
+}
+
+
+@keyframes cartFabPop {
+
+    0% {
+        transform: scale(1);
+    }
+
+    35% {
+        transform: scale(1.22);
+    }
+
+    65% {
+        transform: scale(.92);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+
+@keyframes cartTotalPop {
+
+    0% {
+        transform: scale(1);
+    }
+
+    35% {
+        transform: scale(1.12);
+    }
+
+    65% {
+        transform: scale(.95);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   EMPTY CART
+========================================================= */
+
+.cart-fab-empty {
+
+    opacity: .75;
+
+}
+
+
+.cart-fab-empty #cartFabCount {
+
+    display: none !important;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+
+    #cartSummaryFab {
+
+        margin:
+            0.75rem !important;
+
+    }
+
+
+    .cart-fab {
+
+        width: 56px;
+        height: 56px;
+
+    }
+
+
+    .cart-fab-total {
+
+        font-size: .72rem;
+
+        padding:
+            .45rem
+            .7rem !important;
+
+    }
+
+}
+
+
+/* ============================================================
+   MY ORDERS
+============================================================ */
+
+.order-card {
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.order-card:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, .08) !important;
+}
+
+#myOrdersModal .modal-dialog {
+    max-width: 1100px;
+}
+
+#myOrdersModal .modal-header {
+    background:
+        linear-gradient(
+            135deg,
+            #0d6efd,
+            #084298
+        );
+}
+
+#myOrdersContainer {
+    min-height: 100px;
+}
+
