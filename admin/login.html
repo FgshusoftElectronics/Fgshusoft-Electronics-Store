@@ -3,31 +3,520 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
+    <meta
+        name="theme-color"
+        content="#0d6efd"
+    >
 
-<title>
-Fgshusoft Admin Login
-</title>
-
-
-<link
-href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-rel="stylesheet">
-
-
-<link
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-rel="stylesheet">
+    <title>Admin Login</title>
 
 
-<link
-href="assets/css/admin.css"
-rel="stylesheet">
+    <!-- =====================================================
+         BOOTSTRAP
+    ====================================================== -->
 
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         ADMIN STYLES
+    ====================================================== -->
+
+    <link
+        href="assets/css/admin.css"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        /* =====================================================
+           PAGE
+        ====================================================== */
+
+        body{
+
+            min-height:100vh;
+
+        }
+
+
+        /* =====================================================
+           LOGIN CARD
+        ====================================================== */
+
+        .login-card{
+
+            backdrop-filter:blur(10px);
+
+        }
+
+
+        .login-logo{
+
+            width:80px;
+            height:80px;
+
+            object-fit:contain;
+
+            display:block;
+
+            margin:0 auto;
+
+        }
+
+
+        .login-brand{
+
+            word-break:break-word;
+
+        }
+
+
+        .login-input-icon{
+
+            min-width:46px;
+
+            justify-content:center;
+
+        }
+
+
+        #loginButton{
+
+            transition:.25s ease;
+
+        }
+
+
+        #loginButton:not(:disabled):hover{
+
+            transform:translateY(-1px);
+
+        }
+
+
+        #loginButton:disabled{
+
+            cursor:not-allowed;
+
+        }
+
+
+        [data-company-logo].d-none{
+
+            display:none !important;
+
+        }
+
+
+        .company-name{
+
+            word-break:break-word;
+
+            overflow-wrap:anywhere;
+
+        }
+
+
+        /* =====================================================
+           APPLICATION LOADER
+        ====================================================== */
+
+        .app-loader{
+
+            position:fixed;
+
+            inset:0;
+
+            z-index:99999;
+
+            display:none;
+
+            align-items:center;
+            justify-content:center;
+
+            padding:20px;
+
+            background:
+                rgba(248,250,252,.96);
+
+            backdrop-filter:
+                blur(12px);
+
+            -webkit-backdrop-filter:
+                blur(12px);
+
+        }
+
+
+        .loader-card{
+
+            width:min(100%,420px);
+
+            padding:42px 35px 35px;
+
+            text-align:center;
+
+            background:
+                rgba(255,255,255,.98);
+
+            border:
+                1px solid rgba(0,0,0,.06);
+
+            border-radius:24px;
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,.12);
+
+        }
+
+
+        .loader-icon-wrap{
+
+            position:relative;
+
+            width:92px;
+            height:92px;
+
+            margin:0 auto 25px;
+
+            display:flex;
+
+            align-items:center;
+            justify-content:center;
+
+        }
+
+
+        .loader-spinner{
+
+            position:absolute;
+
+            border-radius:50%;
+
+            border-style:solid;
+
+            border-color:
+                transparent;
+
+        }
+
+
+        .loader-spinner-outer{
+
+            width:92px;
+            height:92px;
+
+            border-width:3px;
+
+            border-top-color:
+                #0d6efd;
+
+            border-right-color:
+                rgba(13,110,253,.25);
+
+            animation:
+                loaderSpin 1.4s linear infinite;
+
+        }
+
+
+        .loader-spinner-inner{
+
+            width:68px;
+            height:68px;
+
+            border-width:3px;
+
+            border-bottom-color:
+                #6f42c1;
+
+            border-left-color:
+                rgba(111,66,193,.25);
+
+            animation:
+                loaderSpinReverse 1s linear infinite;
+
+        }
+
+
+        #loaderIcon{
+
+            position:relative;
+
+            z-index:2;
+
+            font-size:27px;
+
+            color:#0d6efd;
+
+        }
+
+
+        .loader-title{
+
+            margin:0 0 8px;
+
+            font-weight:700;
+
+            color:#212529;
+
+        }
+
+
+        .loader-body{
+
+            margin-bottom:24px;
+
+            color:#6c757d;
+
+            font-size:.92rem;
+
+        }
+
+
+        .loader-progress-wrapper{
+
+            width:100%;
+
+        }
+
+
+        .loader-progress{
+
+            height:7px;
+
+            overflow:hidden;
+
+            border-radius:20px;
+
+            background:#e9ecef;
+
+        }
+
+
+        #loaderProgress{
+
+            border-radius:20px;
+
+            transition:
+                width .35s ease;
+
+        }
+
+
+        @keyframes loaderSpin{
+
+            from{
+                transform:rotate(0deg);
+            }
+
+            to{
+                transform:rotate(360deg);
+            }
+
+        }
+
+
+        @keyframes loaderSpinReverse{
+
+            from{
+                transform:rotate(360deg);
+            }
+
+            to{
+                transform:rotate(0deg);
+            }
+
+        }
+
+
+        /* =====================================================
+           ACCOUNT SETUP MODAL
+        ====================================================== */
+
+        .account-setup-modal .modal-content{
+
+            border:0;
+
+            border-radius:24px;
+
+            overflow:hidden;
+
+            box-shadow:
+                0 25px 80px rgba(0,0,0,.20);
+
+        }
+
+
+        .account-setup-header{
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0d6efd,
+                    #6f42c1
+                );
+
+            color:white;
+
+            border:0;
+
+            padding:25px;
+
+        }
+
+
+        .account-setup-icon{
+
+            width:58px;
+            height:58px;
+
+            border-radius:18px;
+
+            display:flex;
+
+            align-items:center;
+            justify-content:center;
+
+            background:
+                rgba(255,255,255,.16);
+
+            color:white;
+
+            font-size:24px;
+
+            flex-shrink:0;
+
+        }
+
+
+        .account-setup-body{
+
+            padding:30px;
+
+        }
+
+
+        .setup-user-email{
+
+            background:
+                #f8f9fa;
+
+            border:
+                1px solid #e9ecef;
+
+            border-radius:14px;
+
+            padding:12px 15px;
+
+        }
+
+
+        .setup-input-icon{
+
+            width:46px;
+
+            justify-content:center;
+
+            background:#f8f9fa;
+
+        }
+
+
+        .account-setup-footer{
+
+            background:#f8f9fa;
+
+            border:0;
+
+            padding:18px 30px;
+
+        }
+
+
+        #completeAccountSetupButton{
+
+            min-width:170px;
+
+        }
+
+
+        /* =====================================================
+           DARK MODE
+        ====================================================== */
+
+        [data-bs-theme="dark"] .app-loader{
+
+            background:
+                rgba(15,23,42,.96);
+
+        }
+
+
+        [data-bs-theme="dark"] .loader-card{
+
+            background:
+                #1e293b;
+
+            border-color:
+                rgba(255,255,255,.08);
+
+        }
+
+
+        [data-bs-theme="dark"] .loader-title{
+
+            color:#f8fafc;
+
+        }
+
+
+        [data-bs-theme="dark"] .setup-user-email{
+
+            background:#1e293b;
+
+            border-color:
+                rgba(255,255,255,.08);
+
+        }
+
+
+        [data-bs-theme="dark"] .setup-input-icon{
+
+            background:#1e293b;
+
+        }
+
+
+        [data-bs-theme="dark"] .account-setup-footer{
+
+            background:#1e293b;
+
+        }
+
+    </style>
 
 </head>
 
@@ -35,124 +524,907 @@ rel="stylesheet">
 <body class="bg-light">
 
 
-<div class="container">
+<!-- =====================================================
+     LOGIN APPLICATION LOADER
+====================================================== -->
 
-<div class="row justify-content-center align-items-center vh-100">
+<div
+    id="loader"
+    class="app-loader"
+    role="status"
+    aria-live="polite"
+    aria-label="Loading"
+>
+
+    <div class="loader-card">
 
 
-<div class="col-md-5">
+        <!-- =================================================
+             DOUBLE SPINNER + ICON
+        ================================================== -->
+
+        <div class="loader-icon-wrap">
+
+            <span
+                class="loader-spinner loader-spinner-outer"
+                aria-hidden="true"
+            ></span>
+
+            <span
+                class="loader-spinner loader-spinner-inner"
+                aria-hidden="true"
+            ></span>
+
+            <i
+                id="loaderIcon"
+                class="fa-solid fa-shield-halved"
+                aria-hidden="true"
+            ></i>
+
+        </div>
 
 
-<div class="card border-0 shadow rounded-4">
+        <!-- =================================================
+             TITLE
+        ================================================== -->
+
+        <h5
+            id="loaderTitle"
+            class="loader-title"
+        >
+            Secure Login
+        </h5>
 
 
-<div class="card-body p-5 text-center">
+        <!-- =================================================
+             BODY
+        ================================================== -->
+
+        <p
+            id="loaderBody"
+            class="loader-body"
+        >
+            Preparing secure authentication...
+        </p>
 
 
-<div class="mb-4">
+        <!-- =================================================
+             PROGRESS
+        ================================================== -->
 
-<i class="fa-solid fa-microchip fa-3x text-primary"></i>
+        <div class="loader-progress-wrapper">
+
+            <div
+                class="progress loader-progress"
+                role="progressbar"
+                aria-label="Loading progress"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+            >
+
+                <div
+                    id="loaderProgress"
+                    class="progress-bar progress-bar-striped progress-bar-animated"
+                    style="width:0%"
+                ></div>
+
+            </div>
+
+
+            <div
+                class="d-flex justify-content-between mt-2"
+            >
+
+                <small
+                    id="loaderProgressText"
+                    class="text-muted"
+                >
+                    0%
+                </small>
+
+
+                <small
+                    id="loaderFooter"
+                    class="text-muted"
+                >
+                    Please wait...
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <span class="visually-hidden">
+            Loading application...
+        </span>
+
+    </div>
 
 </div>
 
 
-<h3 class="fw-bold">
+<!-- =====================================================
+     LOGIN APPLICATION
+====================================================== -->
 
-FGSHUSOFT
-
-</h3>
-
-
-<p class="text-muted">
-
-Control Center Login
-
-</p>
+<div class="container-fluid">
 
 
-
-<form id="loginForm">
-
-
-<div class="mb-3 text-start">
-
-<label class="form-label">
-
-Email
-
-</label>
+    <div
+        class="row justify-content-center align-items-center min-vh-100 px-3"
+    >
 
 
-<input
-type="email"
-id="email"
-class="form-control"
-required>
+        <div
+            class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4"
+        >
+
+
+            <!-- =================================================
+                 LOGIN CARD
+            ================================================== -->
+
+            <div
+                class="card login-card border-0 shadow-lg rounded-4 overflow-hidden"
+            >
+
+
+                <div class="card-body p-4 p-md-5">
+
+
+                    <!-- =================================================
+                         BRAND
+                    ================================================== -->
+
+                    <div class="text-center mb-4">
+
+
+                        <!-- COMPANY LOGO -->
+
+                        <div class="mb-3">
+
+                            <img
+                                data-company-logo
+                                class="login-logo img-fluid d-none"
+                                alt="Company logo"
+                style= "border-radius:50%;"            
+                            >
+
+                        </div>
+
+
+                        <!-- COMPANY NAME -->
+
+                        <h3
+                            class="fw-bold company-name mb-1"
+                            data-company-name
+                        >
+
+                            Loading...
+
+                        </h3>
+
+
+                        <!-- SUBTITLE -->
+
+                        <p
+                            class="text-muted mb-0"
+                            id="companySubtitle"
+                        >
+
+                            Control Center Login
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         LOGIN FORM
+                    ================================================== -->
+
+                    <form
+                        id="loginForm"
+                        novalidate
+                    >
+
+
+                        <!-- =================================================
+                             EMAIL
+                        ================================================== -->
+
+                        <div class="mb-3">
+
+
+                            <label
+                                for="email"
+                                class="form-label fw-semibold"
+                            >
+
+                                Email
+
+                            </label>
+
+
+                            <div class="input-group">
+
+
+                                <span
+                                    class="input-group-text bg-light login-input-icon"
+                                >
+
+                                    <i
+                                        class="fa-solid fa-envelope text-muted"
+                                    ></i>
+
+                                </span>
+
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    class="form-control"
+                                    placeholder="Enter your email"
+                                    autocomplete="username"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- =================================================
+                             PASSWORD
+                        ================================================== -->
+
+                        <div class="mb-3">
+
+
+                            <label
+                                for="password"
+                                class="form-label fw-semibold"
+                            >
+
+                                Password
+
+                            </label>
+
+
+                            <div class="input-group">
+
+
+                                <span
+                                    class="input-group-text bg-light login-input-icon"
+                                >
+
+                                    <i
+                                        class="fa-solid fa-lock text-muted"
+                                    ></i>
+
+                                </span>
+
+
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    class="form-control"
+                                    placeholder="Enter your password"
+                                    autocomplete="current-password"
+                                    required
+                                >
+
+
+                                <button
+                                    type="button"
+                                    class="btn btn-outline-secondary"
+                                    id="togglePassword"
+                                    aria-label="Show password"
+                                    title="Show password"
+                                >
+
+                                    <i
+                                        class="fa-solid fa-eye"
+                                        id="togglePasswordIcon"
+                                    ></i>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- =================================================
+                             REMEMBER ME
+                        ================================================== -->
+
+                        <div
+                            class="d-flex justify-content-between align-items-center mb-4"
+                        >
+
+
+                            <div class="form-check">
+
+
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    id="rememberMe"
+                                    checked
+                                >
+
+
+                                <label
+                                    class="form-check-label"
+                                    for="rememberMe"
+                                >
+
+                                    Remember me
+
+                                </label>
+
+                            </div>
+
+
+                            <small class="text-muted">
+
+                                <i
+                                    class="fa-solid fa-shield-halved me-1"
+                                ></i>
+
+                                Secure login
+
+                            </small>
+
+                        </div>
+
+
+                        <!-- =================================================
+                             LOGIN BUTTON
+                        ================================================== -->
+
+                        <button
+                            type="submit"
+                            id="loginButton"
+                            class="btn btn-primary w-100 py-2 fw-semibold"
+                        >
+
+                            <span id="loginButtonContent">
+
+                                <i
+                                    class="fa-solid fa-right-to-bracket me-2"
+                                ></i>
+
+                                Login
+
+                            </span>
+
+
+                            <span
+                                id="loginButtonLoading"
+                                class="d-none"
+                            >
+
+                                <span
+                                    class="spinner-border spinner-border-sm me-2"
+                                    aria-hidden="true"
+                                ></span>
+
+                                Signing in...
+
+                            </span>
+
+                        </button>
+
+                    </form>
+
+
+                    <!-- =================================================
+                         SECURITY MESSAGE
+                    ================================================== -->
+
+                    <div class="text-center mt-4">
+
+                        <small class="text-muted">
+
+                            <i
+                                class="fa-solid fa-lock me-1"
+                            ></i>
+
+                            Authorized personnel only
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FOOTER
+            ================================================== -->
+
+            <footer
+                class="text-center text-muted small py-3"
+            >
+
+                <span
+                    data-company-copyright
+                >
+
+                    © Loading...
+
+                </span>
+
+            </footer>
+
+
+        </div>
+
+    </div>
 
 </div>
 
 
+<!-- =====================================================
+     ACCOUNT SETUP MODAL
+====================================================== -->
+
+<div
+    class="modal fade account-setup-modal"
+    id="accountSetupModal"
+    tabindex="-1"
+    aria-labelledby="accountSetupModalLabel"
+    aria-hidden="true"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+>
+
+    <div
+        class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+    >
+
+        <div class="modal-content">
 
 
-<div class="mb-3 text-start">
+            <!-- =================================================
+                 HEADER
+            ================================================== -->
 
-<label class="form-label">
-
-Password
-
-</label>
+            <div class="modal-header account-setup-header">
 
 
-<input
-type="password"
-id="password"
-class="form-control"
-required>
+                <div class="d-flex align-items-center gap-3">
+
+
+                    <div class="account-setup-icon">
+
+                        <i
+                            class="fa-solid fa-user-gear"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h5
+                            id="accountSetupModalLabel"
+                            class="modal-title fw-bold mb-1"
+                        >
+
+                            Complete Your Profile
+
+                        </h5>
+
+
+                        <small class="opacity-75">
+
+                            One-time account setup
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!--
+
+                    IMPORTANT:
+
+                    No normal close button here.
+
+                    The user must complete the profile
+                    before accessing the dashboard.
+
+                -->
+
+            </div>
+
+
+            <!-- =================================================
+                 BODY
+            ================================================== -->
+
+            <div class="modal-body account-setup-body">
+
+
+                <!-- =================================================
+                     WELCOME MESSAGE
+                ================================================== -->
+
+                <div class="mb-4">
+
+
+                    <h5
+                        class="fw-bold"
+                        id="accountSetupWelcome"
+                    >
+
+                        Welcome!
+
+                    </h5>
+
+
+                    <p class="text-muted mb-0">
+
+                        Your authentication account has been verified,
+                        but your Control Center profile has not yet
+                        been created.
+
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     EMAIL
+                ================================================== -->
+
+                <div class="mb-4">
+
+
+                    <label class="form-label fw-semibold">
+
+                        Account Email
+
+                    </label>
+
+
+                    <div
+                        class="setup-user-email
+                               d-flex
+                               align-items-center
+                               gap-2"
+                    >
+
+                        <i
+                            class="fa-solid fa-envelope text-primary"
+                        ></i>
+
+
+                        <span
+                            id="setupUserEmail"
+                            class="fw-semibold text-break"
+                        >
+
+                            —
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     PROFILE FORM
+                ================================================== -->
+
+                <form
+                    id="accountSetupForm"
+                    novalidate
+                >
+
+
+                    <!-- =================================================
+                         FULL NAME
+                    ================================================== -->
+
+                    <div class="mb-3">
+
+
+                        <label
+                            for="setupFullName"
+                            class="form-label fw-semibold"
+                        >
+
+                            Full Name
+                            <span class="text-danger">*</span>
+
+                        </label>
+
+
+                        <div class="input-group">
+
+
+                            <span
+                                class="input-group-text setup-input-icon"
+                            >
+
+                                <i
+                                    class="fa-solid fa-user text-primary"
+                                ></i>
+
+                            </span>
+
+
+                            <input
+                                type="text"
+                                id="setupFullName"
+                                name="setupFullName"
+                                class="form-control"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                                minlength="2"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-text">
+
+                            This name will be displayed in the Control Center.
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         PHONE
+                    ================================================== -->
+
+                    <div class="mb-3">
+
+
+                        <label
+                            for="setupPhone"
+                            class="form-label fw-semibold"
+                        >
+
+                            Phone Number
+                            <span class="text-danger">*</span>
+
+                        </label>
+
+
+                        <div class="input-group">
+
+
+                            <span
+                                class="input-group-text setup-input-icon"
+                            >
+
+                                <i
+                                    class="fa-solid fa-phone text-success"
+                                ></i>
+
+                            </span>
+
+
+                            <input
+                                type="tel"
+                                id="setupPhone"
+                                name="setupPhone"
+                                class="form-control"
+                                placeholder="Enter your phone number"
+                                autocomplete="tel"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         ROLE INFORMATION
+                    ================================================== -->
+
+                    <div class="mb-3">
+
+
+                        <label class="form-label fw-semibold">
+
+                            Account Role
+
+                        </label>
+
+
+                        <div
+                            class="alert
+                                   alert-primary
+                                   d-flex
+                                   align-items-start
+                                   gap-3
+                                   mb-0"
+                        >
+
+                            <i
+                                class="fa-solid fa-shield-halved mt-1"
+                            ></i>
+
+
+                            <div>
+
+
+                                <div
+                                    id="setupRoleTitle"
+                                    class="fw-bold"
+                                >
+
+                                    Administrator
+
+                                </div>
+
+
+                                <small
+                                    id="setupRoleDescription"
+                                >
+
+                                    As the first Control Center user,
+                                    you will receive administrator access
+                                    and full permissions.
+
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SECURITY NOTICE
+                    ================================================== -->
+
+                    <div
+                        class="alert
+                               alert-warning
+                               d-flex
+                               align-items-start
+                               gap-3
+                               mb-0"
+                    >
+
+                        <i
+                            class="fa-solid
+                                   fa-circle-info
+                                   mt-1"
+                        ></i>
+
+
+                        <small>
+
+                            Your profile must be completed before
+                            you can access the Control Center.
+
+                        </small>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- =================================================
+                 FOOTER
+            ================================================== -->
+
+            <div
+                class="modal-footer account-setup-footer"
+            >
+
+
+                <small class="text-muted me-auto">
+
+                    <i
+                        class="fa-solid fa-lock me-1"
+                    ></i>
+
+                    Secure profile creation
+
+                </small>
+
+
+                <button
+                    type="submit"
+                    form="accountSetupForm"
+                    id="completeAccountSetupButton"
+                    class="btn btn-primary rounded-3 px-4"
+                >
+
+                    <span
+                        id="completeAccountSetupContent"
+                    >
+
+                        <i
+                            class="fa-solid fa-check me-2"
+                        ></i>
+
+                        Complete Setup
+
+                    </span>
+
+
+                    <span
+                        id="completeAccountSetupLoading"
+                        class="d-none"
+                    >
+
+                        <span
+                            class="spinner-border
+                                   spinner-border-sm
+                                   me-2"
+                            aria-hidden="true"
+                        ></span>
+
+                        Creating Profile...
+
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
 
-
-<button
-class="btn btn-primary w-100 py-2">
-
-<i class="fa-solid fa-right-to-bracket"></i>
-
-Login
-
-</button>
-
-
-
-</form>
-
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-
+<!-- =====================================================
+     SWEETALERT2
+====================================================== -->
 
 <script
-src="https://cdn.jsdelivr.net/npm/sweetalert2@11">
-</script>
+    src="https://cdn.jsdelivr.net/npm/sweetalert2@11"
+></script>
 
+
+<!-- =====================================================
+     BOOTSTRAP JAVASCRIPT
+     
+     IMPORTANT:
+     Required for Bootstrap modal functionality.
+====================================================== -->
 
 <script
-type="module"
-src="assets/js/auth.js">
-</script>
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+></script>
+
+
+<!-- =====================================================
+     AUTH MODULE
+====================================================== -->
+
+<script
+    type="module"
+    src="assets/js/auth.js"
+></script>
 
 
 </body>
