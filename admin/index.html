@@ -37,29 +37,20 @@ rel="stylesheet">
 
 <!-- ================= MAIN LAYOUT ================= -->
 
-<div class="container-fluid">
+<div class="container-fluid admin-content">
 
     <div class="row g-0">
-
         <!-- Sidebar -->
-
         <aside
         id="sidebar"
         class="col-lg-3 col-xl-2 p-3">
-
         </aside>
-
         <!-- Main Content -->
-
         <main
         class="col-lg-9 col-xl-10 p-4">
-
             <div id="content">
-
             </div>
-
         </main>
-
     </div>
 
 </div>
@@ -70,40 +61,127 @@ rel="stylesheet">
 
 </footer>
 
-<!-- ================= LOADER ================= -->
 
-<div id="loader">
 
-    <div class="text-center">
+<!-- =====================================================
+     APPLICATION LOADER
+===================================================== -->
 
-        <div
-        class="spinner-border text-primary mb-3"
-        style="width:3.2rem;height:3.2rem;"
-        role="status">
 
-            <span class="visually-hidden">
-                Loading...
-            </span>
+<div
+    id="loader"
+    class="app-loader"
+    role="status"
+    aria-live="polite"
+    aria-label="Loading"
+>
+
+    <div class="loader-card">
+
+        <!-- =================================================
+             DOUBLE SPINNER + ICON
+        ================================================== -->
+
+        <div class="loader-icon-wrap">
+
+            <!-- OUTER SPINNER -->
+            <div class="loader-ring loader-ring-outer"></div>
+
+            <!-- INNER SPINNER -->
+            <div class="loader-ring loader-ring-inner"></div>
+
+            <!-- CENTER ICON -->
+            <div class="loader-icon">
+
+                <i
+                    id="loaderIcon"
+                    class="fa-solid fa-microchip"
+                    aria-hidden="true"
+                ></i>
+
+            </div>
 
         </div>
 
-        <h5 class="fw-bold mb-1">
 
-            <i class="fa-solid fa-microchip text-primary"></i>
+        <!-- =================================================
+             TITLE
+        ================================================== -->
 
+        <h5
+            id="loaderTitle"
+            class="loader-title"
+        >
             FGSHUSOFT ELECTRONICS
-
         </h5>
 
-        <small class="text-muted">
 
+        <!-- =================================================
+             BODY / CURRENT STATUS
+        ================================================== -->
+
+        <p
+            id="loaderBody"
+            class="loader-body"
+        >
             Initializing Control Center...
+        </p>
 
-        </small>
+
+        <!-- =================================================
+             PROGRESS BAR
+        ================================================== -->
+
+        <div class="loader-progress-wrapper">
+
+            <div class="loader-progress-info">
+
+                <span>
+                    Loading
+                </span>
+
+                <strong
+                    id="loaderPercentage"
+                >
+                    0%
+                </strong>
+
+            </div>
+
+
+            <div
+                class="loader-progress"
+                role="progressbar"
+                aria-valuenow="0"
+                aria-valuemin="0"
+                aria-valuemax="100"
+            >
+
+                <div
+                    id="loaderProgressBar"
+                    class="loader-progress-bar"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <div
+            id="loaderFooter"
+            class="loader-footer"
+        >
+            Please wait...
+        </div>
 
     </div>
 
 </div>
+
 
 <!-- Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
@@ -113,6 +191,1707 @@ rel="stylesheet">
     
 <!-- Main App -->
 <script type="module" src="assets/js/app.js"></script>
+
+<!-- =====================================================
+     SIDEBAR SECURITY MODAL
+====================================================== -->
+
+<div
+    class="modal fade"
+    id="sidebarSecurityModal"
+    tabindex="-1"
+    aria-labelledby="sidebarSecurityModalLabel"
+    aria-hidden="true"
+>
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content border-0 shadow-lg rounded-4">
+
+
+            <!-- =================================================
+                 HEADER
+            ================================================== -->
+
+            <div class="modal-header border-0">
+
+                <h5
+                    class="modal-title fw-bold"
+                    id="sidebarSecurityModalLabel"
+                >
+
+                    <i class="fa-solid fa-shield-halved text-primary me-2"></i>
+
+                    Sidebar Security
+
+                </h5>
+
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+
+            </div>
+
+
+            <!-- =================================================
+                 BODY
+            ================================================== -->
+
+            <div class="modal-body">
+
+
+                <!-- =================================================
+                     EXISTING PIN VIEW
+                ================================================== -->
+
+                <div id="sidebarPinLoginView">
+
+                    <div class="text-center mb-4">
+
+                        <div
+                            class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center"
+                            style="width:65px;height:65px;"
+                        >
+
+                            <i
+                                class="fa-solid fa-lock text-primary fa-xl"
+                            ></i>
+
+                        </div>
+
+
+                        <h6 class="fw-bold mt-3 mb-1">
+                            Sidebar Locked
+                        </h6>
+
+
+                        <small class="text-muted">
+                            Enter your security PIN to unlock the sidebar.
+                        </small>
+
+                    </div>
+
+
+                    <!-- PIN -->
+
+                    <div class="mb-3">
+
+                        <label
+                            for="sidebarSecurityPin"
+                            class="form-label fw-semibold"
+                        >
+
+                            Security PIN
+
+                        </label>
+
+
+                        <input
+                            type="password"
+                            class="form-control form-control-lg text-center"
+                            id="sidebarSecurityPin"
+                            inputmode="numeric"
+                            autocomplete="off"
+                            maxlength="6"
+                            placeholder="Enter PIN"
+                        >
+
+                    </div>
+
+
+                    <!-- ERROR -->
+
+                    <div
+                        id="sidebarSecurityError"
+                        class="alert alert-danger d-none py-2"
+                        role="alert"
+                    >
+
+                        <i class="fa-solid fa-circle-exclamation me-2"></i>
+
+                        Incorrect PIN.
+
+                    </div>
+
+
+                    <!-- UNLOCK -->
+
+                    <button
+                        type="button"
+                        class="btn btn-primary w-100"
+                        id="unlockSidebarBtn"
+                    >
+
+                        <i class="fa-solid fa-lock-open me-2"></i>
+
+                        Unlock Sidebar
+
+                    </button>
+
+
+                    <!-- FORGOT -->
+
+                    <div class="text-center mt-3">
+
+                        <button
+                            type="button"
+                            class="btn btn-link btn-sm text-decoration-none"
+                            id="forgotSidebarPinBtn"
+                        >
+
+                            <i class="fa-solid fa-key me-1"></i>
+
+                            Forgot PIN?
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     CREATE PIN VIEW
+                ================================================== -->
+
+                <div
+                    id="sidebarPinCreateView"
+                    class="d-none"
+                >
+
+                    <div class="text-center mb-4">
+
+                        <div
+                            class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center"
+                            style="width:65px;height:65px;"
+                        >
+
+                            <i
+                                class="fa-solid fa-shield-halved text-success fa-xl"
+                            ></i>
+
+                        </div>
+
+
+                        <h6 class="fw-bold mt-3 mb-1">
+                            Create Security PIN
+                        </h6>
+
+
+                        <small class="text-muted">
+                            Create a PIN to protect the sidebar.
+                        </small>
+
+                    </div>
+
+
+                    <!-- NEW PIN -->
+
+                    <div class="mb-3">
+
+                        <label
+                            for="newSidebarPin"
+                            class="form-label fw-semibold"
+                        >
+
+                            New PIN
+
+                        </label>
+
+
+                        <input
+                            type="password"
+                            class="form-control form-control-lg text-center"
+                            id="newSidebarPin"
+                            inputmode="numeric"
+                            autocomplete="new-password"
+                            maxlength="6"
+                            placeholder="Create PIN"
+                        >
+
+                    </div>
+
+
+                    <!-- CONFIRM PIN -->
+
+                    <div class="mb-3">
+
+                        <label
+                            for="confirmSidebarPin"
+                            class="form-label fw-semibold"
+                        >
+
+                            Confirm PIN
+
+                        </label>
+
+
+                        <input
+                            type="password"
+                            class="form-control form-control-lg text-center"
+                            id="confirmSidebarPin"
+                            inputmode="numeric"
+                            autocomplete="new-password"
+                            maxlength="6"
+                            placeholder="Confirm PIN"
+                        >
+
+                    </div>
+
+
+                    <!-- CREATE ERROR -->
+
+                    <div
+                        id="sidebarPinCreateError"
+                        class="alert alert-danger d-none py-2"
+                        role="alert"
+                    ></div>
+
+
+                    <!-- CREATE -->
+
+                    <button
+                        type="button"
+                        class="btn btn-success w-100"
+                        id="createSidebarPinBtn"
+                    >
+
+                        <i class="fa-solid fa-key me-2"></i>
+
+                        Create PIN
+
+                    </button>
+
+                </div>
+
+
+                <!-- =================================================
+                     PIN RECOVERY VIEW
+                ================================================== -->
+
+                <div
+                    id="sidebarPinRecoveryView"
+                    class="d-none"
+                >
+
+                    <div class="text-center mb-4">
+
+                        <div
+                            class="bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center"
+                            style="width:65px;height:65px;"
+                        >
+
+                            <i
+                                class="fa-solid fa-user-shield text-warning fa-xl"
+                            ></i>
+
+                        </div>
+
+
+                        <h6 class="fw-bold mt-3 mb-1">
+                            Recover Security PIN
+                        </h6>
+
+
+                        <small class="text-muted">
+
+                            Verify your administrator account
+                            before creating a new PIN.
+
+                        </small>
+
+                    </div>
+
+
+<!-- ACCOUNT VERIFICATION -->
+
+<div class="alert alert-info py-2">
+
+    <i class="fa-solid fa-circle-info me-2"></i>
+
+    Your Firebase administrator account will
+    be used to verify your identity.
+
+</div>
+
+
+<!-- ADMINISTRATOR PASSWORD -->
+
+<div class="mb-3">
+
+    <label
+        for="sidebarRecoveryPassword"
+        class="form-label fw-semibold"
+    >
+        Administrator Password
+    </label>
+
+    <input
+        type="password"
+        class="form-control"
+        id="sidebarRecoveryPassword"
+        autocomplete="current-password"
+        placeholder="Enter your Firebase account password"
+    >
+
+</div>
+
+
+                    <!-- RECOVERY ERROR -->
+
+                    <div
+                        id="sidebarPinRecoveryError"
+                        class="alert alert-danger d-none py-2"
+                        role="alert"
+                    ></div>
+
+
+                    <!-- VERIFY -->
+
+                    <button
+                        type="button"
+                        class="btn btn-warning w-100"
+                        id="verifySidebarRecoveryBtn"
+                    >
+
+                        <i class="fa-solid fa-user-check me-2"></i>
+
+                        Verify Account
+
+                    </button>
+
+
+                    <!-- BACK -->
+
+                    <div class="text-center mt-3">
+
+                        <button
+                            type="button"
+                            class="btn btn-link btn-sm text-decoration-none"
+                            id="backToSidebarPinBtn"
+                        >
+
+                            <i class="fa-solid fa-arrow-left me-1"></i>
+
+                            Back to PIN
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 FOOTER
+            ================================================== -->
+
+            <div class="modal-footer border-0">
+
+                <button
+                    type="button"
+                    class="btn btn-light"
+                    data-bs-dismiss="modal"
+                >
+
+                    Close
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+<!-- =====================================================
+     ADMIN USER PROFILE MODAL
+===================================================== -->
+
+<div
+    class="modal fade"
+    id="adminProfileModal"
+    tabindex="-1"
+    aria-labelledby="adminProfileModalLabel"
+    aria-hidden="true"
+>
+
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+
+        <div
+            class="modal-content
+                   border-0
+                   shadow-lg
+                   rounded-4
+                   overflow-hidden"
+        >
+
+            <!-- =================================================
+                 HEADER
+            ================================================== -->
+
+            <div
+                class="modal-header
+                       border-0
+                       bg-primary
+                       text-white
+                       px-4
+                       py-4"
+            >
+
+                <div class="d-flex align-items-center gap-3">
+
+                    <!-- AVATAR -->
+
+                    <div
+                        class="profile-modal-avatar"
+                        id="profileModalAvatar"
+                    >
+                        <i
+                            class="fa-solid fa-user"
+                            aria-hidden="true"
+                        ></i>
+                    </div>
+
+
+                    <!-- HEADER INFORMATION -->
+
+                    <div>
+
+                        <h5
+                            class="modal-title
+                                   fw-bold
+                                   mb-1"
+                            id="adminProfileModalLabel"
+                        >
+                            Administrator Profile
+                        </h5>
+
+                        <div
+                            class="small opacity-75"
+                            id="profileModalSubtitle"
+                        >
+                            Account information
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+
+            </div>
+
+
+            <!-- =================================================
+                 BODY
+            ================================================== -->
+
+            <div class="modal-body p-4">
+
+                <!-- =================================================
+                     LOADING
+                ================================================== -->
+
+                <div
+                    id="profileModalLoading"
+                    class="text-center py-5"
+                >
+
+                    <div
+                        class="spinner-border
+                               text-primary
+                               mb-3"
+                        role="status"
+                        aria-hidden="true"
+                    ></div>
+
+                    <div class="fw-semibold">
+                        Loading profile...
+                    </div>
+
+                    <small class="text-muted">
+                        Retrieving account information.
+                    </small>
+
+                </div>
+
+
+                <!-- =================================================
+                     PROFILE CONTENT
+                ================================================== -->
+
+                <div
+                    id="profileModalContent"
+                    class="d-none"
+                >
+
+
+                    <!-- =================================================
+                         ACCOUNT SUMMARY
+                    ================================================== -->
+
+                    <div
+                        class="profile-summary
+                               bg-primary-subtle
+                               rounded-4
+                               p-4
+                               mb-4"
+                    >
+
+                        <div class="row g-3 align-items-center">
+
+                            <div class="col-auto">
+
+                                <div
+                                    class="profile-large-avatar"
+                                    id="profileLargeAvatar"
+                                >
+
+                                    <i
+                                        class="fa-solid fa-user"
+                                        aria-hidden="true"
+                                    ></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col">
+
+                                <h5
+                                    id="profileName"
+                                    class="fw-bold mb-1"
+                                >
+                                    Administrator
+                                </h5>
+
+
+                                <div
+                                    id="profileEmail"
+                                    class="text-muted mb-2"
+                                >
+                                    —
+                                </div>
+
+
+                                <div
+                                    class="d-flex
+                                           flex-wrap
+                                           gap-2"
+                                >
+
+                                    <span
+                                        id="profileRoleBadge"
+                                        class="badge
+                                               rounded-pill
+                                               text-bg-primary"
+                                    >
+                                        Administrator
+                                    </span>
+
+
+                                    <span
+                                        id="profileStatusBadge"
+                                        class="badge
+                                               rounded-pill
+                                               text-bg-success"
+                                    >
+                                        Active
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         ACCOUNT INFORMATION
+                    ================================================== -->
+
+                    <div class="mb-4">
+
+                        <div
+                            class="d-flex
+                                   align-items-center
+                                   gap-2
+                                   mb-3"
+                        >
+
+                            <div
+                                class="section-icon
+                                       text-primary"
+                            >
+
+                                <i
+                                    class="fa-solid fa-id-card"
+                                    aria-hidden="true"
+                                ></i>
+
+                            </div>
+
+                            <div>
+
+                                <h6 class="fw-bold mb-0">
+                                    Account Information
+                                </h6>
+
+                                <small class="text-muted">
+                                    Basic account details
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="row g-3">
+
+                            <!-- FULL NAME -->
+
+                            <div class="col-md-6">
+
+                                <div class="profile-info-card">
+
+                                    <small class="text-muted">
+                                        Full Name
+                                    </small>
+
+                                    <div
+                                        id="profileFullName"
+                                        class="fw-semibold"
+                                    >
+                                        —
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- EMAIL -->
+
+                            <div class="col-md-6">
+
+                                <div class="profile-info-card">
+
+                                    <small class="text-muted">
+                                        Email Address
+                                    </small>
+
+                                    <div
+                                        id="profileEmailAddress"
+                                        class="fw-semibold
+                                               text-break"
+                                    >
+                                        —
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- ROLE -->
+
+                            <div class="col-md-6">
+
+                                <div class="profile-info-card">
+
+                                    <small class="text-muted">
+                                        Account Role
+                                    </small>
+
+                                    <div
+                                        id="profileRole"
+                                        class="fw-semibold"
+                                    >
+                                        —
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- ACCOUNT TYPE -->
+
+                            <div class="col-md-6">
+
+                                <div class="profile-info-card">
+
+                                    <small class="text-muted">
+                                        Account Type
+                                    </small>
+
+                                    <div
+                                        id="profileAccountType"
+                                        class="fw-semibold"
+                                    >
+                                        —
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- STATUS -->
+
+                            <div class="col-md-6">
+
+                                <div class="profile-info-card">
+
+                                    <small class="text-muted">
+                                        Account Status
+                                    </small>
+
+                                    <div
+                                        id="profileActive"
+                                        class="fw-semibold"
+                                    >
+                                        —
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- DASHBOARD ACCESS -->
+
+                            <div class="col-md-6">
+
+                                <div class="profile-info-card">
+
+                                    <small class="text-muted">
+                                        Dashboard Access
+                                    </small>
+
+                                    <div
+                                        id="profileDashboardAccess"
+                                        class="fw-semibold"
+                                    >
+                                        —
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SECURITY
+                    ================================================== -->
+
+                    <div class="mb-4">
+
+                        <div
+                            class="d-flex
+                                   align-items-center
+                                   gap-2
+                                   mb-3"
+                        >
+
+                            <div
+                                class="section-icon
+                                       text-danger"
+                            >
+
+                                <i
+                                    class="fa-solid fa-shield-halved"
+                                    aria-hidden="true"
+                                ></i>
+
+                            </div>
+
+                            <div>
+
+                                <h6 class="fw-bold mb-0">
+                                    Security
+                                </h6>
+
+                                <small class="text-muted">
+                                    Authentication and account security
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="row g-3">
+
+                            <!-- EMAIL VERIFICATION -->
+
+                            <div class="col-md-6">
+
+                                <div class="profile-info-card">
+
+                                    <small class="text-muted">
+                                        Email Verification
+                                    </small>
+
+                                    <div
+                                        id="profileEmailVerified"
+                                        class="fw-semibold"
+                                    >
+                                        —
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- AUTH PROVIDER -->
+
+                            <div class="col-md-6">
+
+                                <div class="profile-info-card">
+
+                                    <small class="text-muted">
+                                        Authentication Provider
+                                    </small>
+
+                                    <div
+                                        id="profileProvider"
+                                        class="fw-semibold"
+                                    >
+                                        —
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         MODULE PERMISSIONS
+                    ================================================== -->
+
+                    <div class="mb-4">
+
+                        <div
+                            class="d-flex
+                                   align-items-center
+                                   gap-2
+                                   mb-3"
+                        >
+
+                            <div
+                                class="section-icon
+                                       text-success"
+                            >
+
+                                <i
+                                    class="fa-solid fa-key"
+                                    aria-hidden="true"
+                                ></i>
+
+                            </div>
+
+                            <div>
+
+                                <h6 class="fw-bold mb-0">
+                                    Module Permissions
+                                </h6>
+
+                                <small class="text-muted">
+                                    Access assigned to this account
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="profilePermissions"
+                            class="row g-2"
+                        ></div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         ACCOUNT HISTORY
+                    ================================================== -->
+
+                    <div>
+
+                        <div
+                            class="d-flex
+                                   align-items-center
+                                   gap-2
+                                   mb-3"
+                        >
+
+                            <div
+                                class="section-icon
+                                       text-info"
+                            >
+
+                                <i
+                                    class="fa-solid
+                                           fa-clock-rotate-left"
+                                    aria-hidden="true"
+                                ></i>
+
+                            </div>
+
+                            <div>
+
+                                <h6 class="fw-bold mb-0">
+                                    Account History
+                                </h6>
+
+                                <small class="text-muted">
+                                    Account creation and updates
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="row g-3">
+
+                            <!-- CREATED -->
+
+                            <div class="col-md-6">
+
+                                <div class="profile-info-card">
+
+                                    <small class="text-muted">
+                                        Created
+                                    </small>
+
+                                    <div
+                                        id="profileCreatedAt"
+                                        class="fw-semibold"
+                                    >
+                                        —
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- UPDATED -->
+
+                            <div class="col-md-6">
+
+                                <div class="profile-info-card">
+
+                                    <small class="text-muted">
+                                        Last Updated
+                                    </small>
+
+                                    <div
+                                        id="profileUpdatedAt"
+                                        class="fw-semibold"
+                                    >
+                                        —
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- CREATED BY -->
+
+                            <div class="col-md-6">
+
+                                <div class="profile-info-card">
+
+                                    <small class="text-muted">
+                                        Created By
+                                    </small>
+
+                                    <div
+                                        id="profileCreatedByName"
+                                        class="fw-semibold text-break"
+                                    >
+                                        —
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- CREATOR EMAIL -->
+
+                            <div class="col-md-6">
+
+                                <div class="profile-info-card">
+
+                                    <small class="text-muted">
+                                        Creator Email
+                                    </small>
+
+                                    <div
+                                        id="profileCreatedByEmail"
+                                        class="fw-semibold text-break"
+                                    >
+                                        —
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     ERROR
+                ================================================== -->
+
+                <div
+                    id="profileModalError"
+                    class="d-none
+                           text-center
+                           py-5"
+                >
+
+                    <div class="text-danger mb-3">
+
+                        <i
+                            class="fa-solid
+                                   fa-circle-exclamation
+                                   fa-3x"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+                    <h6 class="fw-bold">
+                        Unable to load profile
+                    </h6>
+
+                    <p
+                        id="profileModalErrorText"
+                        class="text-muted
+                               small
+                               mb-0"
+                    >
+                        Unable to retrieve user information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FOOTER
+            ================================================== -->
+
+            <div
+                class="modal-footer
+                       border-0
+                       px-4
+                       py-3
+                       bg-body-tertiary"
+            >
+
+                <small
+                    class="text-muted
+                           me-auto"
+                >
+
+                    <i
+                        class="fa-solid
+                               fa-lock
+                               me-1"
+                        aria-hidden="true"
+                    ></i>
+
+                    Protected account information
+
+                </small>
+
+
+                <button
+                    type="button"
+                    class="btn
+                           btn-primary
+                           rounded-3
+                           px-4"
+                    data-bs-dismiss="modal"
+                >
+
+                    <i
+                        class="fa-solid
+                               fa-check
+                               me-1"
+                        aria-hidden="true"
+                    ></i>
+
+                    Done
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     COMPANY INFORMATION MODAL
+===================================================== -->
+
+<div
+    class="modal fade"
+    id="companyInfoModal"
+    tabindex="-1"
+    aria-labelledby="companyInfoModalLabel"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal-dialog modal-dialog-centered modal-lg"
+    >
+
+        <div
+            class="modal-content
+                   border-0
+                   shadow-lg
+                   rounded-4
+                   overflow-hidden"
+        >
+
+            <!-- =================================================
+                 HEADER
+            ================================================== -->
+
+            <div
+                class="modal-header
+                       border-0
+                       bg-primary
+                       text-white
+                       px-4
+                       py-4"
+            >
+
+                <div
+                    class="d-flex
+                           align-items-center
+                           gap-3"
+                >
+
+                    <div
+                        class="company-modal-logo"
+                    >
+
+                        <img
+                            id="companyModalLogo"
+                            src="assets/images/logo.png"
+                            alt="Company Logo"
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <h5
+                            id="companyInfoModalLabel"
+                            class="modal-title
+                                   fw-bold
+                                   mb-1"
+                        >
+                            FGSHUSOFT ELECTRONICS
+                        </h5>
+
+                        <div
+                            id="companyModalSubtitle"
+                            class="small
+                                   opacity-75"
+                        >
+                            Electronics & Technology
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn-close
+                           btn-close-white"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+
+            </div>
+
+
+            <!-- =================================================
+                 BODY
+            ================================================== -->
+
+            <div class="modal-body p-4">
+
+
+                <!-- COMPANY SUMMARY -->
+
+                <div
+                    class="company-profile-summary
+                           bg-primary-subtle
+                           rounded-4
+                           p-4
+                           mb-4"
+                >
+
+                    <div
+                        class="row
+                               align-items-center
+                               g-4"
+                    >
+
+                        <div
+                            class="col-auto"
+                        >
+
+                            <div
+                                class="company-large-logo"
+                            >
+
+                                <img
+                                    id="companyLargeLogo"
+                                    src="assets/images/logo.png"
+                                    alt="Company Logo"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="col"
+                        >
+
+                            <h4
+                                id="companyProfileName"
+                                class="fw-bold
+                                       mb-1"
+                            >
+                                FGSHUSOFT ELECTRONICS
+                            </h4>
+
+
+                            <p
+                                id="companyProfileDescription"
+                                class="text-muted
+                                       mb-3"
+                            >
+                                Electronics & Technology
+                            </p>
+
+
+                            <span
+                                class="badge
+                                       rounded-pill
+                                       text-bg-success"
+                            >
+
+                                <i
+                                    class="fa-solid
+                                           fa-circle-check
+                                           me-1"
+                                ></i>
+
+                                Business Active
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     CONTACT INFORMATION
+                ================================================== -->
+
+                <div class="mb-4">
+
+                    <div
+                        class="d-flex
+                               align-items-center
+                               gap-2
+                               mb-3"
+                    >
+
+                        <div
+                            class="section-icon
+                                   text-primary"
+                        >
+
+                            <i
+                                class="fa-solid
+                                       fa-address-card"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h6
+                                class="fw-bold
+                                       mb-0"
+                            >
+                                Contact Information
+                            </h6>
+
+                            <small
+                                class="text-muted"
+                            >
+                                Business contact details
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+
+                            <div
+                                class="company-info-card"
+                            >
+
+                                <div
+                                    class="company-info-icon
+                                           text-primary"
+                                >
+
+                                    <i
+                                        class="fa-solid
+                                               fa-envelope"
+                                    ></i>
+
+                                </div>
+
+                                <div>
+
+                                    <small
+                                        class="text-muted"
+                                    >
+                                        Email Address
+                                    </small>
+
+                                    <div
+                                        id="companyInfoEmail"
+                                        class="fw-semibold
+                                               text-break"
+                                    >
+                                        —
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <div
+                                class="company-info-card"
+                            >
+
+                                <div
+                                    class="company-info-icon
+                                           text-success"
+                                >
+
+                                    <i
+                                        class="fa-solid
+                                               fa-phone"
+                                    ></i>
+
+                                </div>
+
+                                <div>
+
+                                    <small
+                                        class="text-muted"
+                                    >
+                                        Phone
+                                    </small>
+
+                                    <div
+                                        id="companyInfoPhone"
+                                        class="fw-semibold"
+                                    >
+                                        —
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-12">
+
+                            <div
+                                class="company-info-card"
+                            >
+
+                                <div
+                                    class="company-info-icon
+                                           text-danger"
+                                >
+
+                                    <i
+                                        class="fa-solid
+                                               fa-location-dot"
+                                    ></i>
+
+                                </div>
+
+                                <div>
+
+                                    <small
+                                        class="text-muted"
+                                    >
+                                        Business Address
+                                    </small>
+
+                                    <div
+                                        id="companyInfoAddress"
+                                        class="fw-semibold"
+                                    >
+                                        —
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     BUSINESS DETAILS
+                ================================================== -->
+
+                <div>
+
+                    <div
+                        class="d-flex
+                               align-items-center
+                               gap-2
+                               mb-3"
+                    >
+
+                        <div
+                            class="section-icon
+                                   text-success"
+                        >
+
+                            <i
+                                class="fa-solid
+                                       fa-building"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h6
+                                class="fw-bold
+                                       mb-0"
+                            >
+                                Business Details
+                            </h6>
+
+                            <small
+                                class="text-muted"
+                            >
+                                Company configuration
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+
+                            <div
+                                class="profile-info-card"
+                            >
+
+                                <small
+                                    class="text-muted"
+                                >
+                                    Currency
+                                </small>
+
+                                <div
+                                    id="companyInfoCurrency"
+                                    class="fw-semibold"
+                                >
+                                    XAF
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <div
+                                class="profile-info-card"
+                            >
+
+                                <small
+                                    class="text-muted"
+                                >
+                                    Store Status
+                                </small>
+
+                                <div
+                                    id="companyInfoStoreStatus"
+                                    class="fw-semibold"
+                                >
+                                    —
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FOOTER
+            ================================================== -->
+
+            <div
+                class="modal-footer
+                       border-0
+                       px-4
+                       py-3
+                       bg-body-tertiary"
+            >
+
+                <small
+                    class="text-muted me-auto"
+                >
+
+                    <i
+                        class="fa-solid
+                               fa-shield-halved
+                               me-1"
+                    ></i>
+
+                    Official company information
+
+                </small>
+
+
+                <button
+                    type="button"
+                    class="btn
+                           btn-primary
+                           rounded-3
+                           px-4"
+                    data-bs-dismiss="modal"
+                >
+
+                    <i
+                        class="fa-solid
+                               fa-check
+                               me-1"
+                    ></i>
+
+                    Done
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
 
 </body>
 
