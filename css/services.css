@@ -1,0 +1,1025 @@
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services-section {
+    background:
+        linear-gradient(
+            180deg,
+            #f8fafc 0%,
+            #ffffff 100%
+        );
+}
+
+
+/* ---------------------------------------------------------
+   CARD
+--------------------------------------------------------- */
+
+.service-card {
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 28px;
+
+    background: #fff;
+
+    border: 1px solid
+        rgba(15, 23, 42, .07);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(15, 23, 42, .06);
+
+    overflow: hidden;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+
+}
+
+
+.service-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0d6efd,
+            #6f42c1
+        );
+
+}
+
+
+.service-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 22px 45px
+        rgba(15, 23, 42, .12);
+
+    border-color:
+        rgba(13, 110, 253, .2);
+
+}
+
+
+/* ---------------------------------------------------------
+   ICON
+--------------------------------------------------------- */
+
+.service-icon {
+
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 20px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(13,110,253,.12),
+            rgba(111,66,193,.12)
+        );
+
+    color: #0d6efd;
+
+    font-size: 1.55rem;
+
+    transition:
+        transform .3s ease,
+        background .3s ease;
+
+}
+
+
+.service-card:hover
+.service-icon {
+
+    transform:
+        scale(1.08)
+        rotate(-4deg);
+
+}
+
+
+/* ---------------------------------------------------------
+   TITLE
+--------------------------------------------------------- */
+
+.service-title {
+
+    color: #172033;
+
+    font-size: 1.2rem;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+
+}
+
+
+/* ---------------------------------------------------------
+   DESCRIPTION
+--------------------------------------------------------- */
+
+.service-description {
+
+    color: #64748b;
+
+    font-size: .94rem;
+
+    line-height: 1.7;
+
+    margin-bottom: 0;
+
+    min-height: 75px;
+
+}
+
+
+/* ---------------------------------------------------------
+   META
+--------------------------------------------------------- */
+
+.service-meta {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin:
+        20px 0;
+
+}
+
+
+.service-meta .badge {
+
+    padding:
+        8px 11px;
+
+    font-weight: 500;
+
+}
+
+
+/* ---------------------------------------------------------
+   PRICE
+--------------------------------------------------------- */
+
+.service-price {
+
+    color: #198754;
+
+    font-size: 1.25rem;
+
+    font-weight: 800;
+
+}
+
+
+.service-price small {
+
+    color: #64748b;
+
+    font-size: .7rem;
+
+    font-weight: 600;
+
+}
+
+
+/* ---------------------------------------------------------
+   BUTTON
+--------------------------------------------------------- */
+
+.service-btn {
+
+    border-radius: 12px;
+
+    font-weight: 600;
+
+    padding:
+        10px 15px;
+
+    white-space: nowrap;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+.service-btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 18px
+        rgba(13,110,253,.2);
+
+}
+
+
+/* ---------------------------------------------------------
+   EMPTY
+--------------------------------------------------------- */
+
+.services-empty {
+
+    padding:
+        60px 20px;
+
+}
+
+
+.services-empty-icon {
+
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin:
+        0 auto 20px;
+
+    border-radius: 50%;
+
+    background: #f1f5f9;
+
+    color: #94a3b8;
+
+    font-size: 2rem;
+
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 575.98px) {
+
+    .service-card {
+
+        padding: 22px;
+
+        border-radius: 20px;
+
+    }
+
+
+    .service-description {
+
+        min-height: auto;
+
+    }
+
+
+    .service-btn {
+
+        padding:
+            9px 12px;
+
+        font-size: .88rem;
+
+    }
+
+}
+
+
+
+
+/* =========================================================
+   TRAINING / PROJECTS
+========================================================= */
+
+.training-section {
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f8fafc 100%
+        );
+
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.training-card {
+
+    background: #fff;
+
+    border:
+        1px solid
+        rgba(15, 23, 42, .07);
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px
+        rgba(15, 23, 42, .06);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+
+}
+
+
+.training-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 22px 45px
+        rgba(15, 23, 42, .12);
+
+    border-color:
+        rgba(13, 110, 253, .18);
+
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.training-image-wrapper {
+
+    position: relative;
+
+    height: 220px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d6efd,
+            #6f42c1
+        );
+
+}
+
+
+.training-image {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform .5s ease;
+
+}
+
+
+.training-card:hover
+.training-image {
+
+    transform:
+        scale(1.06);
+
+}
+
+
+.training-image-placeholder {
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: rgba(255,255,255,.9);
+
+    font-size: 3rem;
+
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.training-status {
+
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.training-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 25px;
+
+}
+
+
+.training-title {
+
+    color: #172033;
+
+    font-size: 1.2rem;
+
+    font-weight: 750;
+
+    margin-bottom: 10px;
+
+}
+
+
+.training-description {
+
+    color: #64748b;
+
+    font-size: .94rem;
+
+    line-height: 1.7;
+
+    display: -webkit-box;
+
+    -webkit-line-clamp: 3;
+
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+
+    min-height: 72px;
+
+}
+
+
+/* =========================================================
+   META
+========================================================= */
+
+.training-meta {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    color: #64748b;
+
+    font-size: .82rem;
+
+    margin-top: 10px;
+
+}
+
+
+.training-meta span {
+
+    display: inline-flex;
+
+    align-items: center;
+
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.training-progress {
+
+    height: 7px;
+
+    border-radius: 20px;
+
+    background: #e9eef5;
+
+}
+
+
+.training-progress
+.progress-bar {
+
+    border-radius: inherit;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.training-footer {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid #eef1f5;
+
+}
+
+
+.training-price {
+
+    color: #198754;
+
+    font-size: 1.1rem;
+
+    font-weight: 800;
+
+}
+
+
+.training-price small {
+
+    color: #64748b;
+
+    font-size: .68rem;
+
+}
+
+
+.training-btn {
+
+    border-radius: 12px;
+
+    font-weight: 600;
+
+    padding:
+        9px 15px;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.training-empty {
+
+    padding: 60px 20px;
+
+}
+
+
+.training-empty-icon {
+
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin:
+        0 auto 20px;
+
+    border-radius: 50%;
+
+    background: #f1f5f9;
+
+    color: #94a3b8;
+
+    font-size: 2rem;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 575.98px) {
+
+    .training-image-wrapper {
+
+        height: 200px;
+
+    }
+
+
+    .training-content {
+
+        padding: 21px;
+
+    }
+
+
+    .training-description {
+
+        min-height: auto;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   BRANDS SECTION
+========================================================= */
+
+.brands-section {
+    background: #f8fafc;
+}
+
+
+/* =========================================================
+   BRAND CARD
+========================================================= */
+
+.brand-card {
+
+    position: relative;
+
+    height: 100%;
+
+    background: #ffffff;
+
+    border: 1px solid rgba(0, 0, 0, .06);
+
+    border-radius: 22px;
+
+    padding: 28px 22px;
+
+    text-align: center;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, .06);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+
+    overflow: hidden;
+
+}
+
+
+.brand-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0d6efd,
+            #6610f2
+        );
+
+    transform:
+        scaleX(0);
+
+    transform-origin: left;
+
+    transition:
+        transform .35s ease;
+
+}
+
+
+.brand-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, .11);
+
+    border-color:
+        rgba(13, 110, 253, .15);
+
+}
+
+
+.brand-card:hover::before {
+
+    transform:
+        scaleX(1);
+
+}
+
+
+/* =========================================================
+   BRAND LOGO
+========================================================= */
+
+.brand-logo-wrapper {
+
+    width: 90px;
+    height: 90px;
+
+    margin:
+        0 auto 20px;
+
+    border-radius: 20px;
+
+    background:
+        #f8fafc;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    border:
+        1px solid #edf0f3;
+
+}
+
+
+.brand-logo {
+
+    max-width: 72px;
+    max-height: 72px;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    transition:
+        transform .35s ease;
+
+}
+
+
+.brand-card:hover
+.brand-logo {
+
+    transform:
+        scale(1.08);
+
+}
+
+
+/* =========================================================
+   FALLBACK LOGO
+========================================================= */
+
+.brand-logo-fallback {
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #0d6efd;
+
+    font-size: 2rem;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef5ff,
+            #f8f9fa
+        );
+
+}
+
+
+/* =========================================================
+   BRAND NAME
+========================================================= */
+
+.brand-name {
+
+    font-size: 1.15rem;
+
+    font-weight: 700;
+
+    color: #212529;
+
+    margin-bottom: 6px;
+
+}
+
+
+/* =========================================================
+   COUNTRY
+========================================================= */
+
+.brand-country {
+
+    color: #6c757d;
+
+    font-size: .85rem;
+
+    margin-bottom: 12px;
+
+}
+
+
+.brand-country i {
+
+    color: #0d6efd;
+
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.brand-description {
+
+    color: #6c757d;
+
+    font-size: .9rem;
+
+    line-height: 1.6;
+
+    display:
+        -webkit-box;
+
+    -webkit-line-clamp: 3;
+
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+
+    min-height: 64px;
+
+}
+
+
+/* =========================================================
+   WEBSITE BUTTON
+========================================================= */
+
+.brand-website {
+
+    margin-top: 18px;
+
+}
+
+
+.brand-website a {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    text-decoration: none;
+
+    font-size: .85rem;
+
+    font-weight: 600;
+
+    color: #0d6efd;
+
+    transition:
+        color .25s ease;
+
+}
+
+
+.brand-website a:hover {
+
+    color: #084298;
+
+}
+
+
+/* =========================================================
+   STATUS BADGE
+========================================================= */
+
+.brand-status {
+
+    position: absolute;
+
+    top: 16px;
+    right: 16px;
+
+    font-size: .7rem;
+
+    font-weight: 600;
+
+}
+
+
+
+
+
+
+
+/* =========================================================
+   FEATURED PRODUCTS
+========================================================= */
+
+#featuredProducts {
+    width: 100%;
+}
+
+
+/* Portrait phones */
+@media (max-width: 575.98px) {
+
+    #featuredProducts {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #featuredProducts > [class*="col-"] {
+        width: 100%;
+    }
+
+}
+
+
+/* Landscape phones / small tablets */
+@media (min-width: 576px) {
+
+    #featuredProducts > [class*="col-"] {
+        /* Bootstrap controls the width */
+    }
+
+}
+
